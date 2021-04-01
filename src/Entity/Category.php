@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class Category
      */
     private $type;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ticket::class, mappedBy="category_id")
+     */
+    private $ticket_id;
+
+    public function __construct()
+    {
+        $this->ticket_id = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,36 @@ class Category
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ticket[]
+     */
+    public function getTicketId(): Collection
+    {
+        return $this->ticket_id;
+    }
+
+    public function addTicketId(ticket $ticketId): self
+    {
+        if (!$this->ticket_id->contains($ticketId)) {
+            $this->ticket_id[] = $ticketId;
+            $ticketId->setCategoryId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicketId(ticket $ticketId): self
+    {
+        if ($this->ticket_id->removeElement($ticketId)) {
+            // set the owning side to null (unless already changed)
+            if ($ticketId->getCategoryId() === $this) {
+                $ticketId->setCategoryId(null);
+            }
+        }
 
         return $this;
     }

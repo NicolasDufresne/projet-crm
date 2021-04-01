@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ExchangeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,34 @@ class Exchange
      */
     private $relation;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Ticket::class, mappedBy="Exchange_id")
+     */
+    private $ticket_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="exchange_id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="exchange_id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $compagny_id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=user::class, inversedBy="exchange_id")
+     */
+    private $user_id;
+
+    public function __construct()
+    {
+        $this->ticket_id = new ArrayCollection();
+        $this->user_id = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,6 +87,84 @@ class Exchange
     public function setDetail(?string $detail): self
     {
         $this->detail = $detail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getTicketId(): Collection
+    {
+        return $this->ticket_id;
+    }
+
+    public function addTicketId(Ticket $ticketId): self
+    {
+        if (!$this->ticket_id->contains($ticketId)) {
+            $this->ticket_id[] = $ticketId;
+            $ticketId->setExchangeId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicketId(Ticket $ticketId): self
+    {
+        if ($this->ticket_id->removeElement($ticketId)) {
+            // set the owning side to null (unless already changed)
+            if ($ticketId->getExchangeId() === $this) {
+                $ticketId->setExchangeId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getClientId(): ?Client
+    {
+        return $this->client_id;
+    }
+
+    public function setClientId(?Client $client_id): self
+    {
+        $this->client_id = $client_id;
+
+        return $this;
+    }
+
+    public function getCompagnyId(): ?Compagny
+    {
+        return $this->compagny_id;
+    }
+
+    public function setCompagnyId(?Compagny $compagny_id): self
+    {
+        $this->compagny_id = $compagny_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|user[]
+     */
+    public function getUserId(): Collection
+    {
+        return $this->user_id;
+    }
+
+    public function addUserId(user $userId): self
+    {
+        if (!$this->user_id->contains($userId)) {
+            $this->user_id[] = $userId;
+        }
+
+        return $this;
+    }
+
+    public function removeUserId(user $userId): self
+    {
+        $this->user_id->removeElement($userId);
 
         return $this;
     }

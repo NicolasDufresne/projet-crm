@@ -27,6 +27,26 @@ class Appointment
      */
     private $dateTime;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ticket::class, inversedBy="appointment_id")
+     */
+    private $ticket_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=compagny::class, inversedBy="appointment_id")
+     */
+    private $compagny_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="appointment_id")
+     */
+    private $client_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="appointment_id")
+     */
+    private $user_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +72,54 @@ class Appointment
     public function setDateTime(?\DateTimeInterface $dateTime): self
     {
         $this->dateTime = $dateTime;
+
+        return $this;
+    }
+
+    public function getTicketId(): ?ticket
+    {
+        return $this->ticket_id;
+    }
+
+    public function setTicketId(?ticket $ticket_id): self
+    {
+        $this->ticket_id = $ticket_id;
+
+        return $this;
+    }
+
+    public function getCompagnyId(): ?compagny
+    {
+        return $this->compagny_id;
+    }
+
+    public function setCompagnyId(?compagny $compagny_id): self
+    {
+        $this->compagny_id = $compagny_id;
+
+        return $this;
+    }
+
+    public function getClientId(): ?client
+    {
+        return $this->client_id;
+    }
+
+    public function setClientId(?client $client_id): self
+    {
+        $this->client_id = $client_id;
+
+        return $this;
+    }
+
+    public function getUserId(): ?user
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(?user $user_id): self
+    {
+        $this->user_id = $user_id;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -61,6 +63,34 @@ class Client
      * @ORM\Column(type="string", length=128)
      */
     private $commitment;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Exchange::class, mappedBy="client_id")
+     */
+    private $exchange_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Invoice::class, mappedBy="client_id")
+     */
+    private $invoice_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Appointment::class, mappedBy="client_id")
+     */
+    private $appointment_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Quotation::class, mappedBy="client_id")
+     */
+    private $quotation_id;
+
+    public function __construct()
+    {
+        $this->exchange_id = new ArrayCollection();
+        $this->invoice_id = new ArrayCollection();
+        $this->appointment_id = new ArrayCollection();
+        $this->quotation_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -171,6 +201,126 @@ class Client
     public function setCommitment(string $commitment): self
     {
         $this->commitment = $commitment;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exchange[]
+     */
+    public function getExchangeId(): Collection
+    {
+        return $this->exchange_id;
+    }
+
+    public function addExchangeId(Exchange $exchangeId): self
+    {
+        if (!$this->exchange_id->contains($exchangeId)) {
+            $this->exchange_id[] = $exchangeId;
+            $exchangeId->setClientId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExchangeId(Exchange $exchangeId): self
+    {
+        if ($this->exchange_id->removeElement($exchangeId)) {
+            // set the owning side to null (unless already changed)
+            if ($exchangeId->getClientId() === $this) {
+                $exchangeId->setClientId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoiceId(): Collection
+    {
+        return $this->invoice_id;
+    }
+
+    public function addInvoiceId(Invoice $invoiceId): self
+    {
+        if (!$this->invoice_id->contains($invoiceId)) {
+            $this->invoice_id[] = $invoiceId;
+            $invoiceId->setClientId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoiceId(Invoice $invoiceId): self
+    {
+        if ($this->invoice_id->removeElement($invoiceId)) {
+            // set the owning side to null (unless already changed)
+            if ($invoiceId->getClientId() === $this) {
+                $invoiceId->setClientId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Appointment[]
+     */
+    public function getAppointmentId(): Collection
+    {
+        return $this->appointment_id;
+    }
+
+    public function addAppointmentId(Appointment $appointmentId): self
+    {
+        if (!$this->appointment_id->contains($appointmentId)) {
+            $this->appointment_id[] = $appointmentId;
+            $appointmentId->setClientId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppointmentId(Appointment $appointmentId): self
+    {
+        if ($this->appointment_id->removeElement($appointmentId)) {
+            // set the owning side to null (unless already changed)
+            if ($appointmentId->getClientId() === $this) {
+                $appointmentId->setClientId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quotation[]
+     */
+    public function getQuotationId(): Collection
+    {
+        return $this->quotation_id;
+    }
+
+    public function addQuotationId(Quotation $quotationId): self
+    {
+        if (!$this->quotation_id->contains($quotationId)) {
+            $this->quotation_id[] = $quotationId;
+            $quotationId->setClientId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuotationId(Quotation $quotationId): self
+    {
+        if ($this->quotation_id->removeElement($quotationId)) {
+            // set the owning side to null (unless already changed)
+            if ($quotationId->getClientId() === $this) {
+                $quotationId->setClientId(null);
+            }
+        }
 
         return $this;
     }

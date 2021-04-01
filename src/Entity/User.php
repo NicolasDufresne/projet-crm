@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -55,6 +57,34 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=128)
      */
     private $adress;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Exchange::class, mappedBy="user_id")
+     */
+    private $exchange_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Invoice::class, mappedBy="user_id")
+     */
+    private $invoice_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Appointment::class, mappedBy="user_id")
+     */
+    private $appointment_id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Quotation::class, mappedBy="user_id")
+     */
+    private $quotation_id;
+
+    public function __construct()
+    {
+        $this->exchange_id = new ArrayCollection();
+        $this->invoice_id = new ArrayCollection();
+        $this->appointment_id = new ArrayCollection();
+        $this->quotation_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -181,6 +211,120 @@ class User implements UserInterface
     public function setAdress(string $adress): self
     {
         $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exchange[]
+     */
+    public function getExchangeId(): Collection
+    {
+        return $this->exchange_id;
+    }
+
+    public function addExchangeId(Exchange $exchangeId): self
+    {
+        if (!$this->exchange_id->contains($exchangeId)) {
+            $this->exchange_id[] = $exchangeId;
+            $exchangeId->addUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExchangeId(Exchange $exchangeId): self
+    {
+        if ($this->exchange_id->removeElement($exchangeId)) {
+            $exchangeId->removeUserId($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoiceId(): Collection
+    {
+        return $this->invoice_id;
+    }
+
+    public function addInvoiceId(Invoice $invoiceId): self
+    {
+        if (!$this->invoice_id->contains($invoiceId)) {
+            $this->invoice_id[] = $invoiceId;
+            $invoiceId->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoiceId(Invoice $invoiceId): self
+    {
+        if ($this->invoice_id->removeElement($invoiceId)) {
+            // set the owning side to null (unless already changed)
+            if ($invoiceId->getUserId() === $this) {
+                $invoiceId->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Appointment[]
+     */
+    public function getAppointmentId(): Collection
+    {
+        return $this->appointment_id;
+    }
+
+    public function addAppointmentId(Appointment $appointmentId): self
+    {
+        if (!$this->appointment_id->contains($appointmentId)) {
+            $this->appointment_id[] = $appointmentId;
+            $appointmentId->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppointmentId(Appointment $appointmentId): self
+    {
+        if ($this->appointment_id->removeElement($appointmentId)) {
+            // set the owning side to null (unless already changed)
+            if ($appointmentId->getUserId() === $this) {
+                $appointmentId->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quotation[]
+     */
+    public function getQuotationId(): Collection
+    {
+        return $this->quotation_id;
+    }
+
+    public function addQuotationId(Quotation $quotationId): self
+    {
+        if (!$this->quotation_id->contains($quotationId)) {
+            $this->quotation_id[] = $quotationId;
+            $quotationId->addUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuotationId(Quotation $quotationId): self
+    {
+        if ($this->quotation_id->removeElement($quotationId)) {
+            $quotationId->removeUserId($this);
+        }
 
         return $this;
     }
