@@ -3,6 +3,7 @@
     --secondary-color: #deecff;
     --tertiary-color: #c6cfff;
     --button-color: #ff6584;
+    --button-color-hover: #FFB3C2;
     --simple-white: #ffffff;
     --simple-black: #000000;
     --animation: all 0.4s ease;
@@ -67,14 +68,20 @@ body {
     line-height: 3rem;
 }
 
-/*#mainnav ul li a:last-child {*/
-/*    text-decoration: none;*/
-/*    background-color: var(--button-color);*/
-/*    color: var(--simple-white);*/
-/*    border-radius: 5px;*/
-/*    padding: 15px 20px;*/
-/*    margin-bottom: 15px;*/
-/*}*/
+#mainnav ul li .login {
+    text-decoration: none;
+    background-color: var(--button-color);
+    color: var(--simple-white);
+    border-radius: 5px;
+    padding: 10px 20px 15px 20px;
+    -webkit-transition: var(--animation);
+    transition: var(--animation);
+}
+
+#mainnav ul li .login:hover {
+    background-color: var(--button-color-hover);
+    color: var(--simple-white);
+}
 
 #mainnav ul li a:after {
     display: block;
@@ -92,16 +99,6 @@ body {
     -webkit-transition: var(--animation);
     transition: var(--animation);
 }
-
-#mainnav ul li a:hover:after {
-    transform: scaleX(1);
-    width: 40px;
-}
-
-#mainnav ul li a.fromLeft:after {
-    transform-origin: 0% 50%;
-}
-
 
 @media all and (max-width: 1108px) {
     #logo {
@@ -142,11 +139,19 @@ body {
 
 }
 
-
 h1 {
     font-size: 2rem;
     font-weight: bold;
     line-height: 4rem;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+p {
+    padding: 20px 0;
+    font-weight: lighter;
 }
 
 a {
@@ -156,6 +161,15 @@ a {
     border-radius: 5px;
     padding: 25px 20px;
     line-height: 5rem;
+    -webkit-transition: var(--animation);
+    transition: var(--animation);
+}
+
+a:hover {
+    background-color: var(--button-color-hover);
+    color: var(--simple-white);
+    -webkit-transition: var(--animation);
+    transition: var(--animation);
 }
 
 .wrap {
@@ -184,16 +198,46 @@ a {
     transition: var(--animation);
 }
 
-.homepage-txt p {
-    padding: 20px 0;
-    font-weight: lighter;
-}
-
 .homepage-illustration {
     width: 100%;
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.description,
+.first-step {
+    padding: 100px 0;
+}
+
+.description .description-txt {
+    max-width: 802px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.first-step {
+    background-color: var(--secondary-color);
+}
+
+.first-step .first-step-txt {
+    text-align: center;
+}
+
+.first-step .first-step-txt h1{
+    padding: 50px 0 0 0;
+}
+
+.first-step .first-step-txt .advantages-33 {
+    float: left;
+    width: 33.3333333333333333333333333333333333%;
+    min-width: 350px;
+}
+
+.first-step .first-step-txt .advantages-33 img {
+    height: 250px;
+    width: 100%;
+    padding: 50px;
 }
 
 @media screen and (max-width: 916px) {

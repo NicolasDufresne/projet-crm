@@ -2,12 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Bienvenue sur notre plateforme CRM{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
         <link rel="stylesheet" href="/build/app.css">
+{#        <link rel="icon" href="{{ asset('images/logo.png') }}" />#}
     {% endblock %}
 
     {% block javascripts %}
@@ -24,10 +25,10 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo">
         </div>
         <ul class="link">
-            <li><a href="">Infos 1</a></li>
-            <li><a href="">Infos 2</a></li>
+            <li><a href="">Informations</a></li>
+            <li><a href="">Avantages</a></li>
             <li><a href="">Infos 3</a></li>
-            <li><a href="">Se connecter</a></li>
+            <li><a href="" class="login">Se connecter</a></li>
         </ul>
     </div>
 </nav>
