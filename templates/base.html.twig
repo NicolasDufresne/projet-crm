@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+    {% block stylesheets %}
+         {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="/build/app.css">
+    {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block javascripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        {# {{ encore_entry_script_tags('app') }} #}
+    {% endblock %}
+</head>
+<body>
+
+<nav id="mainnav" class="group">
+    <div class="wrap">
+        <div id="menu">&#x2261;</div>
+        <div class="logo">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo">
+        </div>
+        <ul class="link">
+            <li><a href="">Informations</a></li>
+            <li><a href="">Avantages</a></li>
+            <li><a href="">Infos 3</a></li>
+            <li><a href="" class="login">Se connecter</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- responsive navbar -->
+<script>
+    $(document).ready(function () {
+        $('#menu').bind('click', function (event) {
+            $('#mainnav ul').slideToggle();
+        });
+        $(window).resize(function () {
+            var w = $(window).width();
+            if (w > 768) {
+                $('#mainnav ul').removeAttr('style');
+            }
+        });
+    });
+</script>
+
+{% block body %}{% endblock %}
+</body>
 </html>
