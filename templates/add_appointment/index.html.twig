@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Appointment{% endblock %}
+
+{% block body %}
+    <h1>Add appointment</h1>
+
+    {{ form_start(appointment) }}
+    {{ form_row(appointment.object) }}
+    {{ form_row(appointment.dateTime) }}
+{#    {{ form_row(appointment.ticket_id) }}#}
+{#    {{ form_row(appointment.compagny_id) }}#}
+{#    {{ form_row(appointment.user_id) }}#}
+
+    <button type="submit" class="btn">Add </button>
+    {{ form_end(appointment) }}
+{% endblock %}

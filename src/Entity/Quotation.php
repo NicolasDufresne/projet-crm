@@ -45,22 +45,22 @@ class Quotation
     private $HT;
 
     /**
-     * @ORM\ManyToMany(targetEntity=ticket::class, inversedBy="quotation_id")
+     * @ORM\ManyToMany(targetEntity=Ticket::class, inversedBy="quotation_id")
      */
     private $ticket_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="quotation_id")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="quotation_id")
      */
     private $client_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=compagny::class, inversedBy="quotation_id")
+     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="quotation_id")
      */
     private $compagny_id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=user::class, inversedBy="quotation_id")
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="quotation_id")
      */
     private $user_id;
 

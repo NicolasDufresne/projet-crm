@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Quotation{% endblock %}
+
+{% block body %}
+    <h1>Add quotation</h1>
+
+    {{ form_start(quotation) }}
+    {{ form_row(quotation.ref) }}
+    {{ form_row(quotation.status) }}
+    {{ form_row(quotation.TVA) }}
+    {{ form_row(quotation.TTC) }}
+    {{ form_row(quotation.HT) }}
+
+
+    <button type="submit" class="btn">Add </button>
+    {{ form_end(quotation) }}
+{% endblock %}

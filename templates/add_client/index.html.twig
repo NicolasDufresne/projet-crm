@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Client{% endblock %}
+
+{% block body %}
+    <h1>Add client</h1>
+
+    {{ form_start(client) }}
+        {{ form_row(client.email) }}
+        {{ form_row(client.name) }}
+        {{ form_row(client.first_name) }}
+        {{ form_row(client.phonenumber) }}
+        {{ form_row(client.adress) }}
+        {{ form_row(client.CP) }}
+        {{ form_row(client.city) }}
+        {{ form_row(client.commitment) }}
+        {{ form_row(client.status) }}
+
+    <button type="submit" class="btn">Add </button>
+    {{ form_end(client) }}
+{% endblock %}

@@ -29,10 +29,6 @@ class Exchange
      */
     private $detail;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $relation;
 
     /**
      * @ORM\OneToMany(targetEntity=Ticket::class, mappedBy="Exchange_id")
@@ -52,7 +48,7 @@ class Exchange
     private $compagny_id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=user::class, inversedBy="exchange_id")
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="exchange_id")
      */
     private $user_id;
 

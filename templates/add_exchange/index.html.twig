@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Exchange{% endblock %}
+
+{% block body %}
+    <h1>Add exchange</h1>
+
+    {{ form_start(exchange) }}
+    {{ form_row(exchange.type) }}
+    {{ form_row(exchange.detail) }}
+
+
+    <button type="submit" class="btn">Add </button>
+    {{ form_end(exchange) }}
+{% endblock %}

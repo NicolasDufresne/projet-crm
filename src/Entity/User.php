@@ -86,6 +86,8 @@ class User implements UserInterface
         $this->invoice_id = new ArrayCollection();
         $this->appointment_id = new ArrayCollection();
         $this->quotation_id = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
     }
 
     public function getId(): ?int
