@@ -20,7 +20,7 @@ class Historic
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=ticket::class, inversedBy="historic_id")
+     * @ORM\ManyToMany(targetEntity=Ticket::class, inversedBy="historic_id")
      */
     private $ticket_id;
 
