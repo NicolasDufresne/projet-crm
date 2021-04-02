@@ -1,23 +1,119 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %} #}
 
-{% block title %}Register{% endblock %}
+<style>
+
+    body {
+        background-color: #f3f8ff;
+    }
+
+    form, h1 {
+        font-family: "Montserrat", serif;
+    }
+
+    .form {
+        background-color: #FFFFFF;
+        border: solid 1px whitesmoke;
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .form .form-illustration {
+        border-radius: 10px 0 0 10px;
+        width: 55%;
+        float: left;
+        background-color: #FFFFFF;
+    }
+
+    .form .form-illustration img {
+        width: 100%;
+        min-width: 500px;
+    }
+
+    .form .form-txt {
+        text-align: center;
+        background-color: #c6cfff;
+        border-radius: 0 10px 10px 0;
+        width: 45%;
+        float: left;
+        clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%);
+        height: 100%;
+    }
+
+    label:first-child {
+        display: none;
+    }
+
+    input,
+    button {
+        width: 75%;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    button {
+        font-family: "Montserrat", serif;
+        font-size: 1rem;
+        text-decoration: none;
+        background-color: #ff6584;
+        color: #FFFFFF;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        border: none;
+        width: 75%;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: #FFB3C2;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+
+    @media screen and  (max-width: 500px) {
+        .form {
+            width: 80%;
+        }
+        .form .form-illustration {
+            display: none;
+        }
+        .form .form-txt {
+            width: 100%;
+            clip-path: none;
+            border-radius: 10px;
+        }
+    }
+</style>
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <div class="form">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.first_name) }}
-        {{ form_row(registrationForm.name) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="form-illustration">
+            <img src="{{ asset('images/register.svg') }}" alt="">
+        </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+        <div class="form-txt">
+            <h1>S'inscrire</h1>
+
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.first_name) }}
+            {{ form_row(registrationForm.name) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn">S'incrire</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
 {% endblock %}
