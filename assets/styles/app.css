@@ -79,6 +79,8 @@ table {
     --button-color-hover: #FFB3C2;
     --simple-white: #ffffff;
     --simple-black: #000000;
+    --light-black: #33475C;
+    --copyright: #2d3e50;
     --animation: all 0.4s ease;
 }
 
@@ -133,7 +135,9 @@ body {
     padding: 5px
 }
 
-#mainnav ul li a {
+a {
+    padding: 25px 20px;
+    text-decoration: none;
     background: none;
     color: var(--simple-black);
     min-width: 100px;
@@ -156,7 +160,7 @@ body {
     color: var(--simple-white);
 }
 
-#mainnav ul li a:after {
+a:after {
     display: block;
     content: '';
     border-bottom: solid 2px var(--button-color);
@@ -167,7 +171,7 @@ body {
     margin-top: -10px;
 }
 
-#mainnav ul li a:hover {
+a:hover {
     color: var(--button-color);
     -webkit-transition: var(--animation);
     transition: var(--animation);
@@ -227,18 +231,17 @@ p {
     font-weight: lighter;
 }
 
-a {
+.homepage .homepage-txt a {
+    padding: 10px 15px;
     text-decoration: none;
     background-color: var(--button-color);
     color: var(--simple-white);
     border-radius: 5px;
-    padding: 25px 20px;
-    line-height: 5rem;
     -webkit-transition: var(--animation);
     transition: var(--animation);
 }
 
-a:hover {
+.homepage .homepage-txt a:hover {
     background-color: var(--button-color-hover);
     color: var(--simple-white);
     -webkit-transition: var(--animation);
@@ -267,8 +270,6 @@ a:hover {
     left: 33%;
     transform: translate(-50%, -50%);
     z-index: 100;
-    -webkit-transition: var(--animation);
-    transition: var(--animation);
 }
 
 .homepage-illustration {
@@ -323,6 +324,44 @@ a:hover {
     }
 }
 
+
+
+.footer {
+    background-color: var(--light-black);
+    color: var(--simple-white);
+}
+
+.footer .block33 {
+    width: 33.33333333333333333333333333333333333333333%;
+    float: left;
+    padding: 50px 0;
+    font-weight: lighter;
+}
+
+.footer .block33:nth-child(3){
+    text-align: center;
+}
+
+.footer .block33 a {
+    padding: 0 0 0 50px;
+    background-color: transparent;
+    text-align: center;
+    color: var(--simple-white);
+}
+
+.footer .block33 a:hover {
+    color: var(--button-color);
+}
+
+.footer .copyright {
+    background-color: var(--copyright);
+    text-align: center;
+}
+
+.footer .copyright p {
+    padding: 10px 0!important;
+}
+
 @media screen and  (max-width: 600px) {
     .homepage-txt {
         width: 100%;
@@ -330,5 +369,14 @@ a:hover {
         left: 0;
         transform: none;
         text-align: center;
+    }
+
+    .footer .block33 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer .block33 a {
+        padding: 0!important;
     }
 }
