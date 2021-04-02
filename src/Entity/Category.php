@@ -25,7 +25,7 @@ class Category
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity=ticket::class, mappedBy="category_id")
+     * @ORM\OneToMany(targetEntity=Ticket::class, mappedBy="category_id")
      */
     private $ticket_id;
 

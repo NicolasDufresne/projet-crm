@@ -28,22 +28,22 @@ class Appointment
     private $dateTime;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ticket::class, inversedBy="appointment_id")
+     * @ORM\ManyToOne(targetEntity=Ticket::class, inversedBy="appointment_id")
      */
     private $ticket_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=compagny::class, inversedBy="appointment_id")
+     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="appointment_id")
      */
     private $compagny_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="appointment_id")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="appointment_id")
      */
     private $client_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="appointment_id")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="appointment_id")
      */
     private $user_id;
 
