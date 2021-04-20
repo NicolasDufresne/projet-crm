@@ -16,16 +16,14 @@
         <div class="form">
 
             <div class="form-txt">
-                <h1>Add ticket</h1>
+                <h1 class="h1-form-dashboard">Ajouter une ticket</h1>
 
                 {{ form_start(ticket) }}
                 {{ form_row(ticket.object) }}
                 {{ form_row(ticket.details) }}
                 {{ form_row(ticket.status) }}
-
-
-                <button type="submit" class="btn">Add</button>
-                {{ form_end(ticket) }}
+                 <button type="submit" class="btn">Ajouter un ticket</button>
+                    {{ form_end(ticket) }}
             </div>
         </div>
     </div>

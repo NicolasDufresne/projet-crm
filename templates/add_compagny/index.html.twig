@@ -17,7 +17,7 @@
         <div class="form">
 
             <div class="form-txt">
-                <h1>Ajouter une entreprise</h1>
+                <h1 class="h1-form-dashboard">Ajouter une entreprise</h1>
 
                 {{ form_start(compagny) }}
                 {{ form_row(compagny.name) }}
@@ -26,9 +26,8 @@
                 {{ form_row(compagny.TVA) }}
                 {{ form_row(compagny.NAF) }}
                 {{ form_row(compagny.SIRET) }}
-
-                <button type="submit" class="btn">Ajouter une entreprise</button>
-                {{ form_end(compagny) }}
+                    <button type="submit" class="btn">Ajouter une entreprise</button>
+                    {{ form_end(compagny) }}
             </div>
         </div>
     </div>

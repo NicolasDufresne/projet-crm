@@ -17,7 +17,7 @@
         <div class="form">
 
             <div class="form-txt">
-                <h1>Ajouter un client</h1>
+                <h1 class="h1-form-dashboard">Ajouter un client</h1>
 
                 {{ form_start(client) }}
                 {{ form_row(client.email) }}
@@ -29,9 +29,8 @@
                 {{ form_row(client.city) }}
                 {{ form_row(client.commitment) }}
                 {{ form_row(client.status) }}
-
-                <button type="submit" class="btn">Ajouter un client</button>
-                {{ form_end(client) }}
+                    <button type="submit" class="btn">Ajouter un client</button>
+                    {{ form_end(client) }}
             </div>
         </div>
     </div>
