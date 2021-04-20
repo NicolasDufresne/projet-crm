@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Ticket;
 use App\Form\TicketFormType;
+use App\Repository\TicketRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,5 +34,19 @@ class AddTicketController extends AbstractController
         return $this->render('add_ticket/index.html.twig', [
             'ticket' => $form->createView(),
         ]);
+    }
+
+
+    /**
+     * @Route("/ticket", name="ticketAll")
+     */
+    public function AppointmentAll(TicketRepository $ticketRepository) : Response {
+        $ticket = $ticketRepository
+            ->findAll();
+
+        return  $this->render('add_client/clientAll.html.twig',  [
+            'client' => $ticket
+        ]);
+
     }
 }
