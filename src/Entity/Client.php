@@ -92,6 +92,11 @@ class Client
         $this->quotation_id = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return (string) $this->first_name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
