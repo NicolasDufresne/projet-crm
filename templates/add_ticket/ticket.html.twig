@@ -6,14 +6,13 @@
 
     <h1>Ticket</h1>
 
-    {% for i in ticket %}
-        Objet : {{i.object}}
-        Details : {{i.detail}}
-        Status : {{i.status}}
-        Category : {{i.category.type}}
-        Exchange : {{i.exchange.details }}
-        Detail : <a href="/appointment/{{ i.id }}">ici</a>
-    {% endfor %}
+    Email : {{ticket.email}}
+    Nom : {{ticket.name}}
+    Prenom : {{ticket.firstname}}
+    Téléphone : {{ticket.phonenumber}}
+    Adresse : {{ticket.adress}}
+    Cp : {{ticket.cp}}
+    City : {{ticket.city}}
 
 
 {% endblock %}

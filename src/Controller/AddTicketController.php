@@ -38,7 +38,7 @@ class AddTicketController extends AbstractController
 
 
     /**
-     * @Route("/ticket/{id}", name="client")
+     * @Route("/ticket/{id}", name="ticket")
      */
     public function Ticket(int $id, TicketRepository $ticketRepository) : Response {
         $ticket = $ticketRepository
@@ -58,8 +58,8 @@ class AddTicketController extends AbstractController
         $ticket = $ticketRepository
             ->findAll();
 
-        return  $this->render('add_client/clientAll.html.twig',  [
-            'client' => $ticket
+        return  $this->render('add_ticket/ticketAll.html.twig',  [
+            'ticket' => $ticket
         ]);
 
     }
