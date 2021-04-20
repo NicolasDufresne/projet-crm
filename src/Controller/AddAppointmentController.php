@@ -45,7 +45,20 @@ class AddAppointmentController extends AbstractController
         $appointment = $appointmentRepository
             ->find($id);
 
-        return  $this->render('add_appointment/index.html.twig',  [
+        return  $this->render('add_appointment/appointment.html.twig',  [
+            'appointment' => $appointment
+        ]);
+
+    }
+
+    /**
+     * @Route("/appointment", name="appointmentAll")
+     */
+    public function AppointmentAll(AppointmentRepository $appointmentRepository) : Response {
+        $appointment = $appointmentRepository
+            ->findAll();
+
+        return  $this->render('add_appointment/appointmentAll.html.twig',  [
             'appointment' => $appointment
         ]);
 

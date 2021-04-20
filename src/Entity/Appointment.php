@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Appointment
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -123,4 +124,10 @@ class Appointment
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->user_id;
+    }
+
 }
