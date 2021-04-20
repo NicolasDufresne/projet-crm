@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Exchange{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+
+        <div class="form">
+
+            <div class="form-txt">
+                <h1 class="h1-form-dashboard">Ajouter une note</h1>
+
+                {{ form_start(exchange) }}
+                {{ form_row(exchange.type) }}
+                {{ form_row(exchange.detail) }}
+                    <button type="submit" class="btn">Ajouter une note</button>
+                    {{ form_end(exchange) }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

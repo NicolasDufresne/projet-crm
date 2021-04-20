@@ -43,24 +43,24 @@ class Invoice
     private $HT;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ticket::class, inversedBy="invoice_id")
+     * @ORM\ManyToOne(targetEntity=Ticket::class, inversedBy="invoice_id")
      * @ORM\JoinColumn(nullable=false)
      */
     private $ticket_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="invoice_id")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="invoice_id")
      */
     private $client_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=compagny::class, inversedBy="invoice_id")
+     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="invoice_id")
      * @ORM\JoinColumn(nullable=false)
      */
     private $compagny_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="invoice_id")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="invoice_id")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user_id;

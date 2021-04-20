@@ -2,19 +2,55 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class SecurityController extends AbstractController
 {
+
+    public function addUser(Request $request): Response {
+        $user = new User();
+        $datas = json_decode($request->getContent(),true);
+        $response = new Response();
+        $entityManager = $this->getDoctrine()->getManager();
+        $error = [];
+
+        if ($datas['first_name']){
+            $user->setName($datas['first_name']);
+        }
+    }
+
     /**
-     * @Route("/security", name="security")
+     * @Route("/login", name="app_login")
      */
-    public function index(): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        return $this->render('security/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
+         if ($this->getUser()) {
+             return $this->redirectToRoute('home');
+         }
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the users
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+    }
+
+    /**
+     * @Route("/logout", name="app_logout")
+     */
+    public function logout()
+    {
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }

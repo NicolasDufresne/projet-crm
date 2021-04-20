@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Client{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+
+        <div class="form">
+
+            <div class="form-txt">
+                <h1 class="h1-form-dashboard">Ajouter une entreprise</h1>
+
+                {{ form_start(compagny) }}
+                {{ form_row(compagny.name) }}
+                {{ form_row(compagny.adress) }}
+                {{ form_row(compagny.send_adress) }}
+                {{ form_row(compagny.TVA) }}
+                {{ form_row(compagny.NAF) }}
+                {{ form_row(compagny.SIRET) }}
+                    <button type="submit" class="btn">Ajouter une entreprise</button>
+                    {{ form_end(compagny) }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

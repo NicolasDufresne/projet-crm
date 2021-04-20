@@ -17,6 +17,7 @@
 </head>
 <body>
 
+
 <nav id="mainnav" class="group">
     <div class="wrap">
         <div id="menu">&#x2261;</div>
@@ -24,13 +25,41 @@
             <img src="{{ asset('images/logo.png') }}" alt="Logo">
         </div>
         <ul class="link">
-            <li><a href="">Informations</a></li>
-            <li><a href="">Avantages</a></li>
-            <li><a href="">Infos 3</a></li>
-            <li><a href="" class="login">Se connecter</a></li>
+            {% if app.user %}
+                <li class="unshow"><a href="/add/appointment">Rendez-vous</a></li>
+                <li class="unshow"><a href="/add/client">Clients</a></li>
+                <li class="unshow"><a href="/add/compagny">Entreprises</a></li>
+                <li class="unshow"><a href="/add/exchange">Notes</a></li>
+                <li class="unshow"><a href="/add/invoice">Factures</a></li>
+                <li class="unshow"><a href="/add/quotation">Devis</a></li>
+                <li class="unshow"><a href="/add/ticket">Tickets</a></li>
+                <li class="unshow"><a href="/logout" class="login">Deconnexion</a></li>
+            {% else %}
+                <li><a href="#informations">Informations</a></li>
+                <li><a href="#avantages">Avantages</a></li>
+                <li><a href="/login" class="login">Se connecter</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>
+
+
+<div class="dashboard">
+    <ul>
+        <div class="logo-dashboard">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo">
+        </div>
+        <li><a href="/add/appointment">Rendez-vous</a></li>
+        <li><a href="/add/client">Clients</a></li>
+        <li><a href="/add/compagny">Entreprises</a></li>
+        <li><a href="/add/exchange">Notes</a></li>
+        <li><a href="/add/invoice">Factures</a></li>
+        <li><a href="/add/quotation">Devis</a></li>
+        <li><a href="/add/ticket">Tickets</a></li>
+        <li><a href="/logout">Deconnexion</a></li>
+    </ul>
+</div>
+
 <!-- responsive navbar -->
 <script>
     $(document).ready(function () {

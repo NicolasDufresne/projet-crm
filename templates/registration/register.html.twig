@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+
+        {% for flashError in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+        <div class="form">
+
+            <div class="form-txt">
+                <h1>Inscrire un utilisateur</h1>
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.first_name) }}
+                {{ form_row(registrationForm.name) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="btn">Inscrire un utilisateur</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}
