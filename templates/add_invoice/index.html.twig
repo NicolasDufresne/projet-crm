@@ -3,16 +3,31 @@
 {% block title %}Add Invoice{% endblock %}
 
 {% block body %}
-    <h1>Add invoice</h1>
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
 
-    {{ form_start(invoice) }}
-    {{ form_row(invoice.ref) }}
-    {{ form_row(invoice.status) }}
-    {{ form_row(invoice.TVA) }}
-    {{ form_row(invoice.TTC) }}
-    {{ form_row(invoice.HT) }}
+    <div class="fix-block-dashboard"></div>
 
+    <div class="block-dashboard">
 
-    <button type="submit" class="btn">Add </button>
-    {{ form_end(invoice) }}
+        <div class="form">
+
+            <div class="form-txt">
+                <h1 class="h1-form-dashboard">Ajouter une facture</h1>
+
+                {{ form_start(invoice) }}
+                {{ form_row(invoice.ref) }}
+                {{ form_row(invoice.status) }}
+                {{ form_row(invoice.TVA) }}
+                {{ form_row(invoice.TTC) }}
+                {{ form_row(invoice.HT) }}
+                    <button type="submit" class="btn">Ajouter une facture</button>
+                    {{ form_end(invoice) }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
 {% endblock %}

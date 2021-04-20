@@ -3,7 +3,7 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-    <div class="homepage">
+    <div class="homepage" id="compte">
         <div class="wrap">
             <div class="homepage-txt">
                 <h1>Une gestion relation client au top avec CRM</h1>
@@ -12,7 +12,6 @@
                     explicabo iure nobis quia reprehenderit! Ab accusamus asperiores assumenda, autem exercitationem
                     magni quos
                     repellat unde.</p>
-                <a href="">Créer un compte gratuitement</a>
             </div>
             <div class="homepage-illustration wrap">
                 <img src="{{ asset('images/homepage-nature.svg') }}" alt="HomePage">
@@ -20,7 +19,7 @@
         </div>
     </div>
 
-    <div class="description">
+    <div class="description" id="informations">
         <div class="wrap">
             <div class="description-txt">
                 <img src="{{ asset('images/description.svg') }}" alt="Description" width="100px" height="100px">
@@ -35,7 +34,7 @@
         </div>
     </div>
 
-    <div class="first-step">
+    <div class="first-step" id="avantages">
         <div class="wrap">
             <div class="first-step-txt">
                 <div class="advantages">
@@ -71,8 +70,8 @@
             </div>
             <div class="block33">
                 <p>
-                    <a href="">Informations</a> <br/>
-                    <a href="">Avantages</a>
+                    <a href="#informations">Informations</a> <br/>
+                    <a href="#avantages">Avantages</a>
                 </p>
             </div>
             <div class="clear"></div>
