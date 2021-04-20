@@ -28,10 +28,10 @@ class RegistrationFormType extends AbstractType
             ->add('email', TextType::class, [
                 'attr' => ['placeholder' => 'Email'],
             ])
-            ->add('first_name', TextType::class, [
+            ->add('name', TextType::class, [
                 'attr' => ['placeholder' => 'Nom'],
             ])
-            ->add('name', TextType::class, [
+            ->add('first_name', TextType::class, [
                 'attr' => ['placeholder' => 'Prénom'],
             ])
             ->add('agreeTerms', CheckboxType::class, [
