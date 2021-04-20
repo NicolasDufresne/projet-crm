@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+
+    <h1>Client</h1>
+
+    {% for i in client %}
+        Email : {{i.email}}
+        Nom : {{i.name}}
+        Prenom : {{i.firstname}}
+        Téléphone : {{i.phonenumber}}
+        Adresse : {{i.adress}}
+        Cp : {{i.cp}}
+        City : {{i.city}}
+        Detail : <a href="/appointment/{{ i.id }}">ici</a>
+    {% endfor %}
+
+
+{% endblock %}

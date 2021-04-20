@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appointment{% endblock %}
+
+{% block body %}
+    <h1>Appointment</h1>
+
+    Objet : {{appointment.object}}
+    Nom du commercial : {{appointment.userId.name}}
+    Nom du client : {{appointment.clientId.name}}
+    Date du rendez-vous : {{appointment.dateTime | date("m/d/Y H:m")}}
+
+{% endblock %}
