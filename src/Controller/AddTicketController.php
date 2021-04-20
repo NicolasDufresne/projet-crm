@@ -38,9 +38,23 @@ class AddTicketController extends AbstractController
 
 
     /**
+     * @Route("/ticket/{id}", name="client")
+     */
+    public function Ticket(int $id, TicketRepository $ticketRepository) : Response {
+        $ticket = $ticketRepository
+            ->find($id);
+
+        return  $this->render('add_ticket/ticket.html.twig',  [
+            'ticket' => $ticket
+        ]);
+
+    }
+
+
+    /**
      * @Route("/ticket", name="ticketAll")
      */
-    public function AppointmentAll(TicketRepository $ticketRepository) : Response {
+    public function TicketAll(TicketRepository $ticketRepository) : Response {
         $ticket = $ticketRepository
             ->findAll();
 
