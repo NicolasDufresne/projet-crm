@@ -22,14 +22,16 @@
             <div class="form-txt">
                 <h1>Inscrire un utilisateur</h1>
 
-                {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.first_name) }}
-                {{ form_row(registrationForm.name) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Password'
-                }) }}
-                {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.first_name) }}
+            {{ form_row(registrationForm.name) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.adress) }}
+            {{ form_row(registrationForm.phonenumber) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
 
                 <button type="submit" class="btn">Inscrire un utilisateur</button>
                 {{ form_end(registrationForm) }}
