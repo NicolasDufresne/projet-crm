@@ -16,34 +16,6 @@ use Symfony\Component\Serializer\Serializer;
 
 class SecurityController extends AbstractController
 {
-
-    public function addUser(Request $request): Response {
-        $user = new User();
-        $datas = json_decode($request->getContent(),true);
-        $response = new Response();
-        $entityManager = $this->getDoctrine()->getManager();
-        $error = [];
-
-        if ($datas['email']){
-            $user->setEmail($datas['email']);
-        }
-        if ($datas['password']){
-            $user->setPassword($datas['password']);
-        }
-        if ($datas['first_name']){
-            $user->setFirstName($datas['first_name']);
-        }
-        if ($datas['name']){
-            $user->setName($datas['name']);
-        }
-        if ($datas['phonenumber']){
-            $user->setPhonenumber($datas['phonenumber']);
-        }
-        if ($datas['adress']){
-            $user->setAdress($datas['adress']);
-        }
-    }
-
     /**
      * @Route("/login", name="app_login")
      */
