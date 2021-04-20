@@ -24,8 +24,23 @@ class SecurityController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $error = [];
 
+        if ($datas['email']){
+            $user->setEmail($datas['email']);
+        }
+        if ($datas['password']){
+            $user->setPassword($datas['password']);
+        }
         if ($datas['first_name']){
-            $user->setName($datas['first_name']);
+            $user->setFirstName($datas['first_name']);
+        }
+        if ($datas['name']){
+            $user->setName($datas['name']);
+        }
+        if ($datas['phonenumber']){
+            $user->setPhonenumber($datas['phonenumber']);
+        }
+        if ($datas['adress']){
+            $user->setAdress($datas['adress']);
         }
     }
 
