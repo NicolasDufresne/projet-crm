@@ -26,7 +26,7 @@ class AddClientController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('dashboard');
         }
 
 

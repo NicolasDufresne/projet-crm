@@ -52,7 +52,7 @@ class SecurityController extends AbstractController
          if ($this->getUser()) {
              $userid = $this->getUser()->getId();
              var_dump($userid);
-             return $this->redirectToRoute('home');
+             return $this->redirectToRoute('dashboard');
          }
 
         // get the login error if there is one
