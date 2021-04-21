@@ -88,7 +88,7 @@ class User implements UserInterface
         $this->quotation_id = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
-        $this->setRoles((array)"user");
+        $this->setRoles((array)"ROLE_USER");
     }
 
     public function getId(): ?int
