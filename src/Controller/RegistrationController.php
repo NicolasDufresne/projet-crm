@@ -9,13 +9,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, MailerInterface $mailer): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -33,7 +35,24 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+
+            $email = (new Email())
+                ->from('projet.crm.nfactory.NDBBLF@gmail.com')
+                ->to($user->getEmail())
+                ->subject('Hello World !')
+                ->text('Le texte va ici apparement')
+                ->html('<h1>Bienvenue ' . $user->getFirstName() . ' ' . $user->getName() . ' !</h1>
+                    
+                    <p>
+                        Un compte vous à été crée avec votre adresse email sur notre plateforme
+                    </p>
+                    
+                    <p>
+                        Si vous ignorez la raison pour laquelle un compte vous à été créer, merci d\'ignorer ce message
+                    </p>
+                    ');
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('home');
         }
