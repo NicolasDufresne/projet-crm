@@ -36,7 +36,7 @@ class Ticket
 
     /**
      * @ORM\ManyToOne(targetEntity=Exchange::class, inversedBy="ticket_id")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $Exchange_id;
 
@@ -64,6 +64,12 @@ class Ticket
      * @ORM\ManyToMany(targetEntity=Historic::class, mappedBy="ticket_id")
      */
     private $historic_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client;
 
     public function __construct()
     {
@@ -248,6 +254,18 @@ class Ticket
         if ($this->historic_id->removeElement($historicId)) {
             $historicId->removeTicketId($this);
         }
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }

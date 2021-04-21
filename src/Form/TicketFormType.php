@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Client;
 use App\Entity\Ticket;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +16,12 @@ class TicketFormType extends AbstractType
         $builder
             ->add('object')
             ->add('details')
-            ->add('status')
+            ->add('details')
+            ->add('details')
+            ->add('client', EntityType::class, array(
+                'class' => Client::class,
+                'label' => 'Client'
+            ))
 //            ->add('Exchange_id')
 //            ->add('quotation_id')
 //            ->add('category_id')
