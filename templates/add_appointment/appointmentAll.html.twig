@@ -4,15 +4,47 @@
 
 {% block body %}
 
-    <h1>Appointment</h1>
 
-    {% for i in appointment %}
-    Objet : {{i.object}}
-    Nom du commercial : {{i.userId.name}}
-    Nom du client : {{i.clientId.name}}
-    Date du rendez-vous : {{i.dateTime | date("m/d/Y H:m")}}
-    Detail : <a href="/appointment/{{ i.id }}">ici</a>
-    {% endfor %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Rendez-vous</caption>
+            <thead>
+            <tr>
+                <th scope="col">Objet</th>
+                <th scope="col">Nom du commercial</th>
+                <th scope="col">Nom du client</th>
+                <th scope="col">Date du rendez-vous</th>
+                <th scope="col">Detail</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for i in appointment %}
+                <tr>
+                    <td data-label="Objet">{{ i.object }}</td>
+                    <td data-label="Nom du commercial">{{ i.userId.name }}</td>
+                    <td data-label="Nom du client">{{ i.clientId.name }}</td>
+                    <td data-label="Date du rendez-vous">{{ i.dateTime | date("m/d/Y H:m") }}</td>
+                    <td data-label="Detail"><a href="/appointment/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br/>
+
+        <a href="/add/appointment" class="login">Ajouter un rendez-vous</a>
+
+
+    </div>
+    <div class="clear"></div>
 
 
 {% endblock %}
