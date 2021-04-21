@@ -21,6 +21,10 @@ class ExchangeFormType extends AbstractType
                 'class' => Client::class,
                 'label' => 'Client'
             ))
+            ->add('compagny_id', EntityType::class, array(
+                'class' => Compagny::class,
+                'label' => 'Compagny'
+            ))
 //            ->add('client_id')
 //            ->add('compagny_id')
 //            ->add('user_id')
