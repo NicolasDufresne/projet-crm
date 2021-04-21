@@ -17,28 +17,28 @@
             <caption>Rendez-vous</caption>
             <thead>
             <tr>
-                <th scope="col">Objet</th>
+                <th scope="col">Client</th>
                 <th scope="col">Nom du commercial</th>
-                <th scope="col">Nom du client</th>
-                <th scope="col">Date du rendez-vous</th>
+                <th scope="col">Compagny</th>
+                <th scope="col">Type</th>
                 <th scope="col">Detail</th>
             </tr>
             </thead>
             <tbody>
 
-            {% for i in appointment %}
+            {% for i in exchange %}
                 <tr>
-                    <td data-label="Objet">{{ i.object }}</td>
+                    <td data-label="Client">{{ i.clientId.name }}</td>
                     <td data-label="Nom du commercial">{{ i.userId.name }}</td>
-                    <td data-label="Nom du client">{{ i.clientId.name }}</td>
-                    <td data-label="Date du rendez-vous">{{ i.dateTime | date("m/d/Y H:m") }}</td>
-                    <td data-label="Detail"><a href="/appointment/{{ i.id }}">ici</a></td>
+                    <td data-label="Compagny">{{ i.compagny.name }}</td>
+                    <td data-label="Type">{{ i.type }}</td>
+                    <td data-label="Detail"><a href="/exchange/{{ i.id }}">ici</a></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table><br/>
 
-        <a href="/add/appointment" class="login">Ajouter un rendez-vous</a>
+        <a href="/add/exchange" class="login">Ajouter un échange</a>
 
 
     </div>

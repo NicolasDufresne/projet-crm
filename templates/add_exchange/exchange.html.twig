@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exchange{% endblock %}
+
+{% block body %}
+    <h1>Exchange</h1>
+
+    Client : {{exchange.clientId.name}}
+    Nom du commercial : {{exchange.userId.name}}
+    Compagny : {{ exchange.compagny.name }}
+    Type : {{exchange.type}}
+    Detail : {{exchange.detail}}
+
+{% endblock %}

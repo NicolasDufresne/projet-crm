@@ -92,6 +92,9 @@ body {
     position: relative;
 }
 
+.dashboard-nav {
+    display: none;
+}
 
 #mainnav {
     background-color: white;
@@ -148,7 +151,7 @@ a {
 }
 
 
-#mainnav ul li .login {
+.login {
     text-decoration: none;
     background-color: var(--button-color);
     color: var(--simple-white);
@@ -158,7 +161,7 @@ a {
     transition: var(--animation);
 }
 
-#mainnav ul li .login:hover {
+.login:hover {
     background-color: var(--button-color-hover);
     color: var(--simple-white);
 }
@@ -192,6 +195,10 @@ a:hover {
     #menu {
         float: right;
         top: 0;
+    }
+
+    .dashboard-nav {
+        display: block;
     }
 
     #mainnav {
@@ -403,6 +410,7 @@ p {
     height: auto;
     box-shadow: 0 2px 4px rgba(45, 62, 80, 0.12);
     background-color: var(--simple-white);
+    width: 12%;
 }
 
 .logo-dashboard {
@@ -412,12 +420,6 @@ p {
 .logo-dashboard img {
     width: 100%;
     margin-left: 50px;
-}
-
-.fix-block-dashboard {
-    float: left;
-    height: 100vh;
-    width: 208px;
 }
 
 .block-dashboard {
@@ -436,9 +438,8 @@ form, h1 {
 }
 
 .dashboard-homepage {
-    /*background-color: #5eb5e0;*/
-    margin-top: 100px;
-    margin-left: 15%;
+    float: right;
+    width: 88%;
 }
 
 .form {
@@ -518,9 +519,9 @@ button:hover {
 table {
     border: 1px solid #ccc;
     border-collapse: collapse;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
-    width: 100%;
+    width: 97%;
     table-layout: fixed;
 }
 

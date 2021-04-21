@@ -41,16 +41,17 @@ class Exchange
      */
     private $client_id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="exchange_id")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $compagny_id;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="exchange_id")
      */
     private $user_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function __construct()
     {
@@ -129,18 +130,6 @@ class Exchange
         return $this;
     }
 
-    public function getCompagnyId(): ?Compagny
-    {
-        return $this->compagny_id;
-    }
-
-    public function setCompagnyId(?Compagny $compagny_id): self
-    {
-        $this->compagny_id = $compagny_id;
-
-        return $this;
-    }
-
     /**
      * @return Collection|user[]
      */
@@ -161,6 +150,24 @@ class Exchange
     public function removeUserId(user $userId): self
     {
         $this->user_id->removeElement($userId);
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->user_id;
+
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
