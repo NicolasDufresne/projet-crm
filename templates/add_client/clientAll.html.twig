@@ -4,18 +4,51 @@
 
 {% block body %}
 
-    <h1>Client</h1>
 
-    {% for i in client %}
-        Email : {{i.email}}
-        Nom : {{i.name}}
-        Prenom : {{i.firstname}}
-        Téléphone : {{i.phonenumber}}
-        Adresse : {{i.adress}}
-        Cp : {{i.cp}}
-        City : {{i.city}}
-        Detail : <a href="/client/{{ i.id }}">ici</a>
-    {% endfor %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
 
+    <div class="fix-block-dashboard"></div>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Clients</caption>
+            <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Cp</th>
+                <th scope="col">City</th>
+                <th scope="col">Detail</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in client %}
+                <tr>
+                    <td data-label="Email">{{ i.email }}</td>
+                    <td data-label="Nom">{{ i.name }}</td>
+                    <td data-label="Prenom">{{ i.firstname }}</td>
+                    <td data-label="Telephone">{{ i.phonenumber }}</td>
+                    <td data-label="Adresse">{{ i.adress }}</td>
+                    <td data-label="CP">{{ i.cp }}</td>
+                    <td data-label="City">{{ i.city }}</td>
+                    <td data-label="Detail"><a href="/client/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/add/client">Ajouter une client</a>
+
+
+    </div>
+    <div class="clear"></div>
 
 {% endblock %}

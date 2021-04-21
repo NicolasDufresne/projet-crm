@@ -23,6 +23,7 @@ class AddClientController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $client ->setStatus(1);
             $entityManager->persist($client);
             $entityManager->flush();
 

@@ -4,17 +4,52 @@
 
 {% block body %}
 
-    <h1>Compagny</h1>
 
-    {% for i in compagny %}
-        Name : {{i.name}}
-        Adress : {{i.adress}}
-        Send Adress : {{i.sendAdress}}
-        TVA : {{i.tva}}
-        NAF : {{i.naf}}
-        Siret : {{i.siret}}
-        Detail : <a href="/compagny/{{ i.id }}">ici</a>
-    {% endfor %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Entreprises</caption>
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Adresse d'envoi</th>
+                <th scope="col">TVA</th>
+                <th scope="col">NAF</th>
+                <th scope="col">Siret</th>
+                <th scope="col">Detail</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for i in compagny %}
+                <tr>
+                    <td data-label="Nom">{{ i.name }}</td>
+                    <td data-label="Adresse">{{ i.adress }}</td>
+                    <td data-label="Adresse d'envoi">{{ i.sendAdress }}</td>
+                    <td data-label="TVA">{{ i.tva }}</td>
+                    <td data-label="NAF">{{ i.naf }}</td>
+                    <td data-label="Siret">{{ i.siret }}</td>
+                    <td data-label="Detail"><a href="/client/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/add/compagny">Ajouter une entreprise</a>
+
+
+    </div>
+    <div class="clear"></div>
+
 
 
 {% endblock %}
