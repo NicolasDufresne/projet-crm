@@ -20,7 +20,6 @@ class ClientType extends AbstractType
             ->add('CP')
             ->add('city')
             ->add('commitment')
-            ->add('status')
         ;
     }
 

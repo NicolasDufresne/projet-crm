@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compagny{% endblock %}
+
+{% block body %}
+
+    <h1>Compagny</h1>
+
+    {% for i in compagny %}
+        Name : {{i.name}}
+        Adress : {{i.adress}}
+        Send Adress : {{i.sendAdress}}
+        TVA : {{i.tva}}
+        NAF : {{i.naf}}
+        Siret : {{i.siret}}
+        Detail : <a href="/compagny/{{ i.id }}">ici</a>
+    {% endfor %}
+
+
+{% endblock %}
