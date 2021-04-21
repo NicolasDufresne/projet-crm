@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tickets{% endblock %}
+
+{% block body %}
+
+    <h1>Ticket</h1>
+
+    object : {{ticket.object}}
+    details : {{ticket.details}}
+    status : {{ticket.status}}
+    client : {{ticket.client.name}}
+
+
+{% endblock %}

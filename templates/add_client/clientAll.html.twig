@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Clients</caption>
+            <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Cp</th>
+                <th scope="col">City</th>
+                <th scope="col">Detail</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in client %}
+                <tr>
+                    <td data-label="Email">{{ i.email }}</td>
+                    <td data-label="Nom">{{ i.name }}</td>
+                    <td data-label="Prenom">{{ i.firstname }}</td>
+                    <td data-label="Telephone">{{ i.phonenumber }}</td>
+                    <td data-label="Adresse">{{ i.adress }}</td>
+                    <td data-label="CP">{{ i.cp }}</td>
+                    <td data-label="City">{{ i.city }}</td>
+                    <td data-label="Detail"><a href="/client/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br/>
+
+        <a href="/add/client" class="login">Ajouter une client</a>
+
+
+    </div>
+    <div class="clear"></div>
+
+{% endblock %}

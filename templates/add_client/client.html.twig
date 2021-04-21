@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+    <h1>Client</h1>
+
+    Email : {{client.email}}
+    Nom : {{client.name}}
+    Prenom : {{client.firstname}}
+    Téléphone : {{client.phonenumber}}
+    Adresse : {{client.adress}}
+    Cp : {{client.cp}}
+    City : {{client.city}}
+    Compagny : {{ client.compagny }}
+
+{% endblock %}

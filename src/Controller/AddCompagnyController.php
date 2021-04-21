@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Compagny;
 use App\Form\CompagnyFormType;
+use App\Repository\CompagnyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,5 +33,31 @@ class AddCompagnyController extends AbstractController
         return $this->render('add_compagny/index.html.twig', [
             'compagny' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/compagny/{id}", name="compagny")
+     */
+    public function Compagny(int $id, CompagnyRepository $compagnyRepository) : Response {
+        $compagny = $compagnyRepository
+            ->find($id);
+
+        return  $this->render('add_compagny/compagny.html.twig',  [
+            'compagny' => $compagny
+        ]);
+
+    }
+
+    /**
+     * @Route("/compagny", name="compagnyAll")
+     */
+    public function CompagnyAll(CompagnyRepository $compagnyRepository) : Response {
+        $compagny = $compagnyRepository
+            ->findAll();
+
+        return  $this->render('add_compagny/compagnyAll.html.twig',  [
+            'compagny' => $compagny
+        ]);
+
     }
 }

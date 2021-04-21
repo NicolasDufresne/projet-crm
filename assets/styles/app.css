@@ -88,8 +88,13 @@ body {
     font-family: "Montserrat", serif;
     font-size: 1.2rem;
     line-height: 2rem;
+    scroll-behavior: smooth !important;
+    position: relative;
 }
 
+.dashboard-nav {
+    display: none;
+}
 
 #mainnav {
     background-color: white;
@@ -145,7 +150,8 @@ a {
     line-height: 3rem;
 }
 
-#mainnav ul li .login {
+
+.login {
     text-decoration: none;
     background-color: var(--button-color);
     color: var(--simple-white);
@@ -155,7 +161,7 @@ a {
     transition: var(--animation);
 }
 
-#mainnav ul li .login:hover {
+.login:hover {
     background-color: var(--button-color-hover);
     color: var(--simple-white);
 }
@@ -177,6 +183,10 @@ a:hover {
     transition: var(--animation);
 }
 
+.unshow {
+    display: none !important;
+}
+
 @media all and (max-width: 1108px) {
     #logo {
         width: 100%;
@@ -185,6 +195,10 @@ a:hover {
     #menu {
         float: right;
         top: 0;
+    }
+
+    .dashboard-nav {
+        display: block;
     }
 
     #mainnav {
@@ -212,6 +226,14 @@ a:hover {
         display: block;
         text-align: center;
         padding: 10px 20px;
+    }
+
+    .dashboard {
+        display: none;
+    }
+
+    .unshow {
+        display: block !important;
     }
 
 }
@@ -325,7 +347,6 @@ p {
 }
 
 
-
 .footer {
     background-color: var(--light-black);
     color: var(--simple-white);
@@ -338,7 +359,7 @@ p {
     font-weight: lighter;
 }
 
-.footer .block33:nth-child(3){
+.footer .block33:nth-child(3) {
     text-align: center;
 }
 
@@ -359,7 +380,7 @@ p {
 }
 
 .footer .copyright p {
-    padding: 10px 0!important;
+    padding: 10px 0 !important;
 }
 
 @media screen and  (max-width: 600px) {
@@ -377,6 +398,202 @@ p {
     }
 
     .footer .block33 a {
-        padding: 0!important;
+        padding: 0 !important;
+    }
+}
+
+.dashboard {
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(45, 62, 80, 0.12);
+    background-color: var(--simple-white);
+    width: 12%;
+}
+
+.logo-dashboard {
+    width: 50px;
+}
+
+.logo-dashboard img {
+    width: 100%;
+    margin-left: 50px;
+}
+
+.block-dashboard {
+    padding: 50px;
+    width: auto;
+    float: left;
+}
+
+form, h1 {
+    font-family: "Montserrat", serif;
+    padding: 0 10px;
+}
+
+.h1-form-dashboard {
+    margin-left: 20%;
+}
+
+.dashboard-homepage {
+    float: right;
+    width: 88%;
+}
+
+.form {
+    border: solid 1px whitesmoke;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+.form .form-txt {
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    width: 100%;
+    height: 100%;
+}
+
+label:first-child {
+    display: inline-block;
+    width: 20%;
+}
+
+input,
+button {
+    width: 75%;
+    border: 1px solid var(--light-black);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    font-family: "Montserrat", serif;
+    font-size: 1rem;
+    text-decoration: none;
+    background-color: #ff6584;
+    color: #FFFFFF;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    border: none;
+    width: 75%;
+    margin-left: 20%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #FFB3C2;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+@media screen and  (max-width: 700px) {
+    .form {
+        width: 80%;
+    }
+
+    .form .form-illustration {
+        display: none;
+    }
+
+    .form .form-txt {
+        width: 100%;
+        clip-path: none;
+        border-radius: 10px;
+    }
+
+    .h1-form-dashboard {
+        margin: 0;
+    }
+}
+
+/*************************Table******************************/
+
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    width: 97%;
+    table-layout: fixed;
+}
+
+table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+}
+
+table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+    font-size: 1rem;
+}
+
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
+}
+
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+
+    table caption {
+        font-size: 1.3em;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    table td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
     }
 }

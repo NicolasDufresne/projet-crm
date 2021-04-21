@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tickets{% endblock %}
+
+{% block body %}
+
+    <h1>Ticket</h1>
+
+    {% for i in ticket %}
+        object : {{i.object}}
+        details : {{i.details}}
+        status : {{i.status}}
+        client : {{i.client.name}}
+        user : {{i.user.name}}
+        Detail : <a href="/ticket/{{ i.id }}">ici</a>
+    {% endfor %}
+
+
+{% endblock %}

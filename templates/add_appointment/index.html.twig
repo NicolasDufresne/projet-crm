@@ -3,15 +3,32 @@
 {% block title %}Add Appointment{% endblock %}
 
 {% block body %}
-    <h1>Add appointment</h1>
 
-    {{ form_start(appointment) }}
-    {{ form_row(appointment.object) }}
-    {{ form_row(appointment.dateTime) }}
-{#    {{ form_row(appointment.ticket_id) }}#}
-{#    {{ form_row(appointment.compagny_id) }}#}
-{#    {{ form_row(appointment.user_id) }}#}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
 
-    <button type="submit" class="btn">Add </button>
-    {{ form_end(appointment) }}
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+
+        <div class="form">
+
+            <div class="form-txt">
+                <h1 class="h1-form-dashboard">Ajouter une rendez-vous</h1>
+
+                {{ form_start(appointment) }}
+                {{ form_row(appointment.object) }}
+                {{ form_row(appointment.dateTime) }}
+                {{ form_row(appointment.client_id) }}
+                {# {{ form_row(appointment.compagny_id) }} #}
+                {# {{ form_row(appointment.user_id) }} #}
+                    <button type="submit" class="btn">Ajoutez un rendez-vous</button>
+                    {{ form_end(appointment) }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
 {% endblock %}

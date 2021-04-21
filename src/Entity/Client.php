@@ -84,12 +84,23 @@ class Client
      */
     private $quotation_id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Compagny::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $compagny;
+
     public function __construct()
     {
         $this->exchange_id = new ArrayCollection();
         $this->invoice_id = new ArrayCollection();
         $this->appointment_id = new ArrayCollection();
         $this->quotation_id = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->first_name;
     }
 
     public function getId(): ?int
@@ -321,6 +332,18 @@ class Client
                 $quotationId->setClientId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCompagny(): ?Compagny
+    {
+        return $this->compagny;
+    }
+
+    public function setCompagny(?Compagny $compagny): self
+    {
+        $this->compagny = $compagny;
 
         return $this;
     }
