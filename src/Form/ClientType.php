@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Client;
+use App\Entity\Compagny;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,6 +22,10 @@ class ClientType extends AbstractType
             ->add('CP')
             ->add('city')
             ->add('commitment')
+            ->add('compagny', EntityType::class, array(
+                'class' => Compagny::class,
+                'label' => 'Compagny'
+            ))
         ;
     }
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Exchange;
 use App\Form\ExchangeFormType;
+use App\Repository\ExchangeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +31,32 @@ class AddExchangeController extends AbstractController
 
         return  $this->render('add_exchange/index.html.twig',  [
             'exchange' => $form->createView()
+        ]);
+
+    }
+
+    /**
+     * @Route("/exchange/{id}", name="exchange")
+     */
+    public function Exchange(int $id, ExchangeRepository $exchangeRepository) : Response {
+        $exchange = $exchangeRepository
+            ->find($id);
+
+        return  $this->render('add_exchange/exchange.html.twig',  [
+            'exchange' => $exchange
+        ]);
+
+    }
+
+    /**
+     * @Route("/exchange", name="exchangeAll")
+     */
+    public function ExchangeAll(ExchangeRepository $exchangeRepository) : Response {
+        $exchange = $exchangeRepository
+            ->findAll();
+
+        return  $this->render('add_exchange/exchangeAll.html.twig',  [
+            'exchange' => $exchange
         ]);
 
     }

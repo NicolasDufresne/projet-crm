@@ -165,4 +165,10 @@ class Exchange
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->user_id;
+
+    }
+
 }

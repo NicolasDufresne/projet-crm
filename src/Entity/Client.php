@@ -84,6 +84,12 @@ class Client
      */
     private $quotation_id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Compagny::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $compagny;
+
     public function __construct()
     {
         $this->exchange_id = new ArrayCollection();
@@ -326,6 +332,18 @@ class Client
                 $quotationId->setClientId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCompagny(): ?Compagny
+    {
+        return $this->compagny;
+    }
+
+    public function setCompagny(?Compagny $compagny): self
+    {
+        $this->compagny = $compagny;
 
         return $this;
     }
