@@ -24,6 +24,8 @@ class AddTicketController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $userid = $this->getUser();
+            $ticket ->setUserId($userid);
             $ticket ->setStatus(1);
             $entityManager->persist($ticket);
             $entityManager->flush();

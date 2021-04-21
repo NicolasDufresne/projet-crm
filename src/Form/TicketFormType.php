@@ -16,8 +16,6 @@ class TicketFormType extends AbstractType
         $builder
             ->add('object')
             ->add('details')
-            ->add('details')
-            ->add('details')
             ->add('client', EntityType::class, array(
                 'class' => Client::class,
                 'label' => 'Client'
