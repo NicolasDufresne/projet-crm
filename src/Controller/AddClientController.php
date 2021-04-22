@@ -54,6 +54,11 @@ class AddClientController extends AbstractController
      * @Route("/client", name="clientAll")
      */
     public function AppointmentAll(ClientRepository $clientRepository) : Response {
+        $user = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
+
         $client = $clientRepository
             ->findAll();
 

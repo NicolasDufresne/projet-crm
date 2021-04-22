@@ -55,6 +55,10 @@ class AddCompagnyController extends AbstractController
      * @Route("/compagny", name="compagnyAll")
      */
     public function CompagnyAll(CompagnyRepository $compagnyRepository) : Response {
+        $user = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
         $compagny = $compagnyRepository
             ->findAll();
 
