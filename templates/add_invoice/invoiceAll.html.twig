@@ -34,8 +34,8 @@
                     <td data-label="TVA">{{ i.tva }}</td>
                     <td data-label="TTC">{{ i.ttc }}</td>
                     <td data-label="HT">{{ i.ht }}</td>
-                    <td data-label="Client">{{ i.client.name }}</td>
-                    <td data-label="User">{{ i.user.name }}</td>
+                    <td data-label="Client">{{ i.clientId.name }}</td>
+                    <td data-label="User">{{ i.userId.name }}</td>
                     <td data-label="Detail"><a href="/invoice/{{ i.id }}">ici</a></td>
                 </tr>
             {% endfor %}
