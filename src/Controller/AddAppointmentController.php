@@ -5,9 +5,12 @@ use App\Entity\Appointment;
 use App\Entity\User;
 use App\Form\AppointmentFormType;
 use App\Repository\AppointmentRepository;
+use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AddAppointmentController extends AbstractController
@@ -15,7 +18,7 @@ class AddAppointmentController extends AbstractController
     /**
      * @Route("/add/appointment", name="add_appointment")
      */
-    public function addAppointment(Request $request) : Response {
+    public function addAppointment(Request $request, MailerInterface $mailer) : Response {
         $appointment = new Appointment();
         $form = $this->createForm(AppointmentFormType::class, $appointment);
         $form->handleRequest($request);
@@ -28,7 +31,36 @@ class AddAppointmentController extends AbstractController
             $entityManager->persist($appointment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            $dateString = $appointment->getDateTime()->format('Y-m-d H:i:s');
+            $userEmail = $this->getUser()->getUsername();
+
+            $email = (new Email())
+                ->from('projet.crm.nfactory.NDBBLF@gmail.com')
+                ->to($userEmail)
+                ->subject('Une nouvelle réunion dont vous êtes membre à été définie')
+                ->text($appointment->getObject() . ' ' . $dateString)
+                ->html('<h1>Réunion définie le : ' . $dateString . '</h1>
+                    
+                    <p>
+                        Cette réunion aura pour sujet : ' . $appointment->getObject() . '
+                    </p>
+                    <p>
+                        Le client concerné est : ' . $appointment->getClientId()->getName() . ' ' . $appointment->getClientId()->getFirstName() . '
+                    </p>
+                    <p>
+                        Il est contactable via : ' . $appointment->getClientId()->getEmail() . ' / ' . $appointment->getClientId()->getPhonenumber() . '
+                    </p>
+                    <p>
+                        Son adresse complète est : ' . $appointment->getClientId()->getAdress() . ' ' . $appointment->getClientId()->getCP() . ' ' . $appointment->getClientId()->getCity() . '
+                    </p>
+                    <p>
+                       Ce client est indiqué comme : ' . $appointment->getClientId()->getCommitment() . '
+                    </p>
+                    ');
+
+            $mailer->send($email);
+
+            return $this->redirectToRoute('dashboard');
 
         }
 
