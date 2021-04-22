@@ -114,7 +114,6 @@ class AppFixtures extends Fixture
             $invoice = new Invoice();
             $invoice->setTicketId($ticket);
             $invoice->setClientId($client);
-            $invoice->setCompagnyId($company);
             $invoice->setUserId($user);
             $invoice->setRef($faker->sha256);
             $invoice->setStatus(true);
