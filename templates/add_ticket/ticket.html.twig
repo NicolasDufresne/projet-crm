@@ -4,12 +4,21 @@
 
 {% block body %}
 
-    <h1>Ticket</h1>
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
 
-    object : {{ticket.object}}
-    details : {{ticket.details}}
-    status : {{ticket.status}}
-    client : {{ticket.client.name}}
+    <div class="dashboard-homepage">
+        <div class="dashboard-homepage-details">
+            <h1>Détails du ticket du client {{ticket.client.name}}</h1>
 
+            <div class="card"><h2>Object : </h2>{{ticket.object}}</div>
+            <div class="card"><h2>Details : </h2>{{ ticket.details }}</div>
+            <div class="card"><h2>Status : </h2>{{ ticket.status }}</div>
+            <div class="card"><h2>Client : </h2>{{ ticket.client.name }}</div>
+        </div>
+    </div>
 
 {% endblock %}

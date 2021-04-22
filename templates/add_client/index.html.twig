@@ -20,14 +20,30 @@
                 <h1 class="h1-form-dashboard">Ajouter un client</h1>
 
                 {{ form_start(client) }}
-                {{ form_row(client.email) }}
-                {{ form_row(client.name) }}
-                {{ form_row(client.first_name) }}
-                {{ form_row(client.phonenumber) }}
-                {{ form_row(client.adress) }}
-                {{ form_row(client.CP) }}
-                {{ form_row(client.city) }}
-                {{ form_row(client.commitment) }}
+                {{ form_row(client.email, {
+                    label: 'E-mail'
+                }) }}
+                {{ form_row(client.name, {
+                    label: 'Nom'
+                }) }}
+                {{ form_row(client.first_name, {
+                    label: 'Prénom'
+                }) }}
+                {{ form_row(client.phonenumber, {
+                    label: 'Téléphone'
+                }) }}
+                {{ form_row(client.adress, {
+                    label: 'Adresse'
+                }) }}
+                {{ form_row(client.CP, {
+                    label: 'Code Postal'
+                }) }}
+                {{ form_row(client.city, {
+                    label: 'Ville'
+                }) }}
+                {{ form_row(client.commitment, {
+                    label: 'Engagement'
+                }) }}
                 {{ form_row(client.compagny) }}
                     <button type="submit" class="btn">Ajouter un client</button>
                     {{ form_end(client) }}
