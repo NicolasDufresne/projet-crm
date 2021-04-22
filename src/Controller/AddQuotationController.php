@@ -58,15 +58,9 @@ class AddQuotationController extends AbstractController
         if (empty($user)) {
             return $this->redirectToRoute('home');
         }
-        $role = $user->getRoles();
 
-        if ($role[0] === "ROLE_ADMIN") {
-            $quotation = $quotationRepository
-                ->findAll();
-        } else if ($role[0] === "ROLE_USER") {
-            $quotation = $quotationRepository
-                ->findBy(['user' => $user]);
-        }
+        $quotation = $quotationRepository
+            ->findAll();
 
         return  $this->render('add_quotation/quotationAll.html.twig',  [
             'quotation' => $quotation

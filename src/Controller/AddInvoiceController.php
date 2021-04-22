@@ -54,9 +54,20 @@ class AddInvoiceController extends AbstractController
      * @Route("/invoice", name="invoiceAll")
      */
     public function InvoiceAll(InvoiceRepository $invoiceRepository) : Response {
-        $invoice = $invoiceRepository
-            ->findAll();
 
+        $user = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
+        $role = $user->getRoles();
+
+        if ($role[0] === "ROLE_ADMIN") {
+            $invoice = $invoiceRepository
+                ->findAll();
+        } else if ($role[0] === "ROLE_USER") {
+            $invoice = $invoiceRepository
+                ->findBy(['user_id' => $user]);
+        }
         return  $this->render('add_invoice/invoiceAll.html.twig',  [
             'invoice' => $invoice
         ]);
