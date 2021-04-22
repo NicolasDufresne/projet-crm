@@ -103,7 +103,7 @@ class AppFixtures extends Fixture
             $quotation = new Quotation();
             $quotation->setClientId($client);
             $quotation->setCompagnyId($company);
-            $quotation->setRef($faker->sha256);
+            $quotation->setRef($faker->uuid);
             $quotation->setStatus(true);
             $quotation->setTVA($faker->randomDigit);
             $quotation->setTTC($faker->randomDigit);
@@ -115,7 +115,7 @@ class AppFixtures extends Fixture
             $invoice->setTicketId($ticket);
             $invoice->setClientId($client);
             $invoice->setUserId($user);
-            $invoice->setRef($faker->sha256);
+            $invoice->setRef($faker->uuid);
             $invoice->setStatus(true);
             $invoice->setTVA($faker->randomDigit);
             $invoice->setTTC($faker->randomDigit);

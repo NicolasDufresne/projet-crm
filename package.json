@@ -15,7 +15,7 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress",
         "full:install": "yarn install && composer install && symfony server:start ",
-        "install:database": "php bin/console doctrine:database:create && php bin/console doctrine:migrations:migrate && php bin/console doctrine:migrations:migrate",
+        "database:install": "php bin/console doctrine:database:create && php bin/console doctrine:migrations:migrate && php bin/console doctrine:migrations:migrate",
         "fixture": "php bin/console doctrine:fixtures:load"
     }
 }
