@@ -20,7 +20,7 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, MailerInterface $mailer): Response
     {
         $actualUser = $this->getUser();
-        if (empty($user)) {
+        if (empty($actualUser)) {
             return $this->redirectToRoute('home');
         }
         $role = $actualUser->getRoles();
