@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Invoice;
 use App\Form\InvoiceFormType;
+use App\Repository\InvoiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,8 @@ class AddInvoiceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $userid = $this->getUser();
+            $invoice ->setUserId($userid);
             $entityManager->persist($invoice);
             $entityManager->flush();
 
@@ -30,6 +33,32 @@ class AddInvoiceController extends AbstractController
 
         return  $this->render('add_invoice/index.html.twig',  [
             'invoice' => $form->createView()
+        ]);
+
+    }
+
+    /**
+     * @Route("/invoice/{id}", name="invoice")
+     */
+    public function Invoice(int $id, InvoiceRepository $invoiceRepository) : Response {
+        $invoice = $invoiceRepository
+            ->find($id);
+
+        return  $this->render('add_invoice/invoice.html.twig',  [
+            'invoice' => $invoice
+        ]);
+
+    }
+
+    /**
+     * @Route("/invoice", name="invoiceAll")
+     */
+    public function InvoiceAll(InvoiceRepository $invoiceRepository) : Response {
+        $invoice = $invoiceRepository
+            ->findAll();
+
+        return  $this->render('add_invoice/invoiceAll.html.twig',  [
+            'invoice' => $invoice
         ]);
 
     }
