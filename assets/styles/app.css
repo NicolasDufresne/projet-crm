@@ -187,56 +187,6 @@ a:hover {
     display: none !important;
 }
 
-@media all and (max-width: 1108px) {
-    #logo {
-        width: 100%;
-    }
-
-    #menu {
-        float: right;
-        top: 0;
-    }
-
-    .dashboard-nav {
-        display: block;
-    }
-
-    #mainnav {
-        width: 100%;
-    }
-
-    #mainnav #menu {
-        display: block;
-        font-size: 4em;
-    }
-
-    #mainnav ul {
-        display: none;
-        background-color: white;
-        padding: 1em;
-        text-align: left;
-        width: 100%;
-    }
-
-    #mainnav ul li {
-        display: block;
-    }
-
-    #mainnav ul li a {
-        display: block;
-        text-align: center;
-        padding: 10px 20px;
-    }
-
-    .dashboard {
-        display: none;
-    }
-
-    .unshow {
-        display: block !important;
-    }
-
-}
 
 h1 {
     font-size: 2rem;
@@ -325,8 +275,7 @@ p {
 }
 
 .first-step .first-step-txt .advantages-33 {
-    float: left;
-    width: 33.3333333333333333333333333333333333%;
+    display: inline-block;
     min-width: 350px;
 }
 
@@ -411,6 +360,7 @@ p {
     box-shadow: 0 2px 4px rgba(45, 62, 80, 0.12);
     background-color: var(--simple-white);
     width: 12%;
+    z-index: 99999;
 }
 
 .logo-dashboard {
@@ -423,9 +373,9 @@ p {
 }
 
 .block-dashboard {
-    padding: 50px;
-    width: auto;
-    float: left;
+    width: 100%;
+    height: 100vh;
+    position: relative;
 }
 
 form, h1 {
@@ -440,6 +390,25 @@ form, h1 {
 .dashboard-homepage {
     float: right;
     width: 88%;
+}
+
+.dashboard-homepage-details {
+    padding: 20px;
+}
+
+.dashboard-homepage-illustration {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.card {
+    background-color: var(--simple-white);
+    box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .form {
@@ -465,9 +434,10 @@ label:first-child {
 }
 
 input,
-button {
+button,
+select {
     width: 75%;
-    border: 1px solid var(--light-black);
+    border: 1px solid lightgray;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
@@ -531,7 +501,7 @@ table caption {
 }
 
 table tr {
-    background-color: #f8f8f8;
+    background-color: var(--simple-white);
     border: 1px solid #ddd;
     padding: .35em;
     font-size: 1rem;
@@ -596,4 +566,78 @@ table th {
     table td:last-child {
         border-bottom: 0;
     }
+}
+
+.btn-add {
+    width: 100%;
+    text-align: center;
+}
+
+@media all and (max-width: 1108px) {
+    #logo {
+        width: 100%;
+    }
+
+    #menu {
+        float: right;
+        top: 0;
+    }
+
+    .dashboard-nav {
+        display: block;
+    }
+
+    #mainnav {
+        width: 100%;
+    }
+
+    #mainnav #menu {
+        display: block;
+        font-size: 4em;
+    }
+
+    #mainnav ul {
+        display: none;
+        background-color: white;
+        padding: 1em;
+        text-align: left;
+        width: 100%;
+    }
+
+    #mainnav ul li {
+        display: block;
+    }
+
+    #mainnav ul li a {
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    .dashboard {
+        display: none;
+    }
+
+    .unshow {
+        display: block !important;
+    }
+
+    .dashboard-homepage {
+        width: 100%;
+        margin-top: 130px;
+    }
+}
+
+#appointment_form_dateTime_date_month,
+#appointment_form_dateTime_date_day,
+#appointment_form_dateTime_date_year,
+#appointment_form_dateTime_time_hour,
+#appointment_form_dateTime_time_minute {
+    width: 15%;
+    margin: 10px;
+}
+
+#appointment_form_dateTime {
+    display: inline-block;
+    width: 75%;
 }

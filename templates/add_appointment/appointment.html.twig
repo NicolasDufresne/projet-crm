@@ -3,11 +3,21 @@
 {% block title %}Appointment{% endblock %}
 
 {% block body %}
-    <h1>Appointment</h1>
 
-    Objet : {{appointment.object}}
-    Nom du commercial : {{appointment.userId.name}}
-    Nom du client : {{appointment.clientId.name}}
-    Date du rendez-vous : {{appointment.dateTime | date("m/d/Y H:m")}}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
 
+    <div class="dashboard-homepage">
+        <div class="dashboard-homepage-details">
+            <h1>Détails du rendez-vous du {{ appointment.dateTime | date("m/d/Y") }}</h1>
+
+            <div class="card"><h2>Objet : </h2>{{ appointment.object }}</div>
+            <div class="card"><h2>Nom du commercial : </h2>{{ appointment.userId.name }}</div>
+            <div class="card"><h2>Nom du client : </h2>{{ appointment.clientId.name }}</div>
+            <div class="card"><h2>Date et heure : </h2>{{ appointment.dateTime | date("m/d/Y H:m") }}</div>
+        </div>
+    </div>
 {% endblock %}

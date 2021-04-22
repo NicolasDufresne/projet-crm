@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210421133932 extends AbstractMigration
+final class Version20210421135505 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -33,7 +33,7 @@ final class Version20210421133932 extends AbstractMigration
         $this->addSql('CREATE TABLE quotation_ticket (quotation_id INT NOT NULL, ticket_id INT NOT NULL, INDEX IDX_6DD06739B4EA4E60 (quotation_id), INDEX IDX_6DD06739700047D2 (ticket_id), PRIMARY KEY(quotation_id, ticket_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE quotation_user (quotation_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_10677305B4EA4E60 (quotation_id), INDEX IDX_10677305A76ED395 (user_id), PRIMARY KEY(quotation_id, user_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE ticket (id INT AUTO_INCREMENT NOT NULL, exchange_id_id INT DEFAULT NULL, category_id_id INT DEFAULT NULL, client_id INT NOT NULL, user_id INT NOT NULL, object VARCHAR(128) NOT NULL, details VARCHAR(128) DEFAULT NULL, status VARCHAR(128) NOT NULL, INDEX IDX_97A0ADA36173D21F (exchange_id_id), INDEX IDX_97A0ADA39777D11E (category_id_id), INDEX IDX_97A0ADA319EB6921 (client_id), INDEX IDX_97A0ADA3A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, name VARCHAR(128) NOT NULL, first_name VARCHAR(128) NOT NULL, phonenumber VARCHAR(128) DEFAULT NULL, adress VARCHAR(128) DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, name VARCHAR(128) NOT NULL, first_name VARCHAR(128) NOT NULL, phonenumber VARCHAR(128) DEFAULT NULL, adress VARCHAR(128) DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE appointment ADD CONSTRAINT FK_FE38F8445774FDDC FOREIGN KEY (ticket_id_id) REFERENCES ticket (id)');
         $this->addSql('ALTER TABLE appointment ADD CONSTRAINT FK_FE38F844BE539471 FOREIGN KEY (compagny_id_id) REFERENCES compagny (id)');
         $this->addSql('ALTER TABLE appointment ADD CONSTRAINT FK_FE38F844DC2902E0 FOREIGN KEY (client_id_id) REFERENCES client (id)');
