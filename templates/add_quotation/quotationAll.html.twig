@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quotation{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Devis</caption>
+            <thead>
+            <tr>
+                <th scope="col">Ref</th>
+                <th scope="col">Status</th>
+                <th scope="col">TVA</th>
+                <th scope="col">TTC</th>
+                <th scope="col">HT</th>
+                <th scope="col">Client</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for i in quotation %}
+                <tr>
+                    <td data-label="Ref">{{ i.Ref }}</td>
+                    <td data-label="Status">{{ i.Status }}</td>
+                    <td data-label="TVA">{{ i.tva }}</td>
+                    <td data-label="TTC">{{ i.ttc }}</td>
+                    <td data-label="HT">{{ i.ht }}</td>
+                    <td data-label="Client">{{ i.clientId.name }}</td>
+                    <td data-label="Detail"><a href="/invoice/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br/>
+
+        <div class="btn-add"><a href="/add/quotation" class="login">Ajouter un devis</a></div>
+
+
+    </div>
+    <div class="clear"></div>
+
+
+{% endblock %}

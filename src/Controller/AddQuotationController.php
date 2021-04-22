@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Quotation;
 use App\Form\QuotationFormType;
+use App\Repository\QuotationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,5 +34,43 @@ class AddQuotationController extends AbstractController
         return $this->render('add_quotation/index.html.twig', [
             'quotation' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/quotation/{id}", name="quotation")
+     */
+    public function Quotation(int $id, QuotationRepository $quotationRepository) : Response {
+        $quotation = $quotationRepository
+            ->find($id);
+
+        return  $this->render('add_quotation/quotation.html.twig',  [
+            'quotation' => $quotation
+        ]);
+
+    }
+
+    /**
+     * @Route("/quotation", name="quotationAll")
+     */
+    public function QuotationAll(QuotationRepository $quotationRepository) : Response {
+
+        $user = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
+        $role = $user->getRoles();
+
+        if ($role[0] === "ROLE_ADMIN") {
+            $quotation = $quotationRepository
+                ->findAll();
+        } else if ($role[0] === "ROLE_USER") {
+            $quotation = $quotationRepository
+                ->findBy(['user' => $user]);
+        }
+
+        return  $this->render('add_quotation/quotationAll.html.twig',  [
+            'quotation' => $quotation
+        ]);
+
     }
 }
