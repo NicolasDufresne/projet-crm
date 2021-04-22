@@ -18,7 +18,22 @@
 <body>
 
 {% if app.user %}
-
+    <div class="dashboard">
+        <ul>
+            <div class="logo-dashboard">
+                <a href="/dashboard"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a>
+            </div>
+            <li><a href="/appointment">Rendez-vous</a></li>
+            <li><a href="/client"></i>Clients</a></li>
+            <li><a href="/compagny">Entreprises</a></li>
+            <li><a href="/exchange">Échanges</a></li>
+            <li><a href="/invoice">Factures</a></li>
+            <li><a href="/quotation">Devis</a></li>
+            <li><a href="/ticket">Tickets</a></li>
+            <li><a href="/register">Utilisateurs</a></li>
+            <li><a href="/logout" class="login">Deconnexion</a></li>
+        </ul>
+    </div>
 {% else %}
 
     <nav id="mainnav" class="group">
@@ -45,13 +60,13 @@
         </div>
         <ul class="link">
             {% if app.user %}
-                <li class="unshow"><a href="/add/appointment">Rendez-vous</a></li>
-                <li class="unshow"><a href="/add/client">Clients</a></li>
-                <li class="unshow"><a href="/add/compagny">Entreprises</a></li>
-                <li class="unshow"><a href="/add/exchange">Notes</a></li>
-                <li class="unshow"><a href="/add/invoice">Factures</a></li>
-                <li class="unshow"><a href="/add/quotation">Devis</a></li>
-                <li class="unshow"><a href="/add/ticket">Tickets</a></li>
+                <li class="unshow"><a href="/appointment">Rendez-vous</a></li>
+                <li class="unshow"><a href="/client">Clients</a></li>
+                <li class="unshow"><a href="/compagny">Entreprises</a></li>
+                <li class="unshow"><a href="/exchange">Échanges</a></li>
+                <li class="unshow"><a href="/invoice">Factures</a></li>
+                <li class="unshow"><a href="/quotation">Devis</a></li>
+                <li class="unshow"><a href="/ticket">Tickets</a></li>
                 <li class="unshow"><a href="/register">Utilisateurs</a></li>
                 <li class="unshow"><a href="/logout" class="login">Deconnexion</a></li>
             {% else %}
@@ -63,23 +78,6 @@
     </div>
 </nav>
 
-
-<div class="dashboard">
-    <ul>
-        <div class="logo-dashboard">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo">
-        </div>
-        <li><a href="/appointment">Rendez-vous</a></li>
-        <li><a href="/client">Clients</a></li>
-        <li><a href="/compagny">Entreprises</a></li>
-        <li><a href="/exchange">Notes</a></li>
-        <li><a href="/invoice">Factures</a></li>
-        <li><a href="/quotation">Devis</a></li>
-        <li><a href="/ticket">Tickets</a></li>
-        <li><a href="/register">Utilisateurs</a></li>
-        <li><a href="/logout">Deconnexion</a></li>
-    </ul>
-</div>
 
 <!-- responsive navbar -->
 <script>

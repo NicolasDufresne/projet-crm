@@ -3,13 +3,23 @@
 {% block title %}Compagny{% endblock %}
 
 {% block body %}
-    <h1>Compagny</h1>
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
 
-    Name : {{compagny.name}}
-    Adress : {{compagny.adress}}
-    Send Adress : {{compagny.sendAdress}}
-    TVA : {{compagny.tva}}
-    NAF : {{compagny.naf}}
-    Siret : {{compagny.siret}}
+    <div class="dashboard-homepage">
+        <div class="dashboard-homepage-details">
+            <h1>Détails de l'entreprise {{compagny.name}}</h1>
+
+            <div class="card"><h2>Name : </h2>{{compagny.name}}</div>
+            <div class="card"><h2>Adress : </h2>{{ compagny.adress }}</div>
+            <div class="card"><h2>Send Adress : </h2>{{ compagny.sendAdress }}</div>
+            <div class="card"><h2>TVA : </h2>{{ compagny.tva }}</div>
+            <div class="card"><h2>NAF : </h2>{{ compagny.naf }}</div>
+            <div class="card"><h2>Siret : </h2>{{ compagny.siret }}</div>
+        </div>
+    </div>
 
 {% endblock %}

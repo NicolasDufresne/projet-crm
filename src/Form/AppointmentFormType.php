@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +21,9 @@ class AppointmentFormType extends AbstractType
     {
 
         $builder
-            ->add('object')
+            ->add('object', TextType::class, [
+                'attr' => ['placeholder' => 'Objet du rendez-vous'],
+            ])
             ->add('dateTime')
 //            ->add('ticket_id')
 //            ->add('compagny_id')
