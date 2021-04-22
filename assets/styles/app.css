@@ -71,6 +71,7 @@ table {
     *zoom: 1;
 }
 
+
 :root {
     --primary-color: #f3f8ff;
     --secondary-color: #deecff;
@@ -353,14 +354,15 @@ p {
 
 .dashboard {
     padding: 20px;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
-    height: auto;
+    height: 100vh;
     box-shadow: 0 2px 4px rgba(45, 62, 80, 0.12);
     background-color: var(--simple-white);
     width: 12%;
     z-index: 99999;
+    overflow: auto;
 }
 
 .logo-dashboard {
@@ -571,6 +573,7 @@ table th {
 .btn-add {
     width: 100%;
     text-align: center;
+    padding: 50px 0;
 }
 
 @media all and (max-width: 1108px) {
@@ -640,4 +643,12 @@ table th {
 #appointment_form_dateTime {
     display: inline-block;
     width: 75%;
+}
+
+.dashboard a {
+    line-height: 2.5rem;
+}
+
+nav ul li a {
+    line-height: 2rem;
 }

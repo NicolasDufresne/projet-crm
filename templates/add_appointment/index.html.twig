@@ -20,8 +20,12 @@
                 <h1 class="h1-form-dashboard">Ajouter une rendez-vous</h1>
 
                 {{ form_start(appointment) }}
-                {{ form_row(appointment.object) }}
-                {{ form_row(appointment.dateTime) }}
+                {{ form_row(appointment.object, {
+                    label: 'Objet'
+                }) }}
+                {{ form_row(appointment.dateTime, {
+                    label: 'Date et heure'
+                }) }}
                 {{ form_row(appointment.client_id) }}
                 {# {{ form_row(appointment.compagny_id) }} #}
                 {# {{ form_row(appointment.user_id) }} #}

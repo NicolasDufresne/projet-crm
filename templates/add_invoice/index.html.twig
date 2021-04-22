@@ -19,11 +19,23 @@
                 <h1 class="h1-form-dashboard">Ajouter une facture</h1>
 
                 {{ form_start(invoice) }}
-                {{ form_row(invoice.ref) }}
-                {{ form_row(invoice.status) }}
-                {{ form_row(invoice.TVA) }}
-                {{ form_row(invoice.TTC) }}
-                {{ form_row(invoice.HT) }}
+                {{ form_row(invoice.ref, {
+                    label: 'Référence'
+                }) }}
+                {{ form_row(invoice.status, {
+                    label: 'Statut'
+                }) }}
+                {{ form_row(invoice.TVA, {
+                    label: 'TVA'
+                }) }}
+                {{ form_row(invoice.TTC, {
+                    label: 'TTC'
+                }) }}
+                {{ form_row(invoice.HT, {
+                    label: 'HT'
+                }) }}
+                {{ form_row(invoice.client_id) }}
+                {{ form_row(invoice.ticket_id) }}
                     <button type="submit" class="btn">Ajouter une facture</button>
                     {{ form_end(invoice) }}
             </div>

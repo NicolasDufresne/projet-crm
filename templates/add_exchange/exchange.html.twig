@@ -11,14 +11,12 @@
 
     <div class="dashboard-homepage">
         <div class="dashboard-homepage-details">
-            <h1>Détails de l'échange avec {{exchange.clientId.name}}</h1>
+            <h1 class="h1-form-dashboard">Détails de l'échange avec {{ exchange.clientId.name }}</h1>
 
-            <div class="card"><h2>Client : </h2>{{exchange.clientId.name}}</div>
-            <div class="card"><h2>Nom du commercial : </h2>{{ exchange.userId.name }}</div>
-            <div class="card"><h2>Entreprise : </h2>{{ exchange.compagny.name }}</div>
+            <div class="card"><h2>Client : </h2>{{ exchange.clientId.name }}</div>
+            <div class="card"><h2>Nom du commercial : </h2>{{ exchange.user.name }}</div>
             <div class="card"><h2>Type : </h2>{{ exchange.type }}</div>
             <div class="card"><h2>Détails : </h2>{{ exchange.detail }}</div>
         </div>
     </div>
-
 {% endblock %}

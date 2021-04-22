@@ -44,7 +44,9 @@
                 {{ form_row(client.commitment, {
                     label: 'Engagement'
                 }) }}
-                {{ form_row(client.compagny) }}
+                {{ form_row(client.compagny, {
+                    label: 'Entreprise'
+                }) }}
                     <button type="submit" class="btn">Ajouter un client</button>
                     {{ form_end(client) }}
             </div>

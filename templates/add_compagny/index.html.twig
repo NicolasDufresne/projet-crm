@@ -27,10 +27,14 @@
                     label: 'Adresse'
                 }) }}
                 {{ form_row(compagny.send_adress, {
-                    label: 'Adresse d\'envoie'
+                    label: 'Adresse d\'envoi'
                 }) }}
-                {{ form_row(compagny.TVA) }}
-                {{ form_row(compagny.NAF) }}
+                {{ form_row(compagny.TVA, {
+                    label: 'TVA'
+                }) }}
+                {{ form_row(compagny.NAF, {
+                    label: 'NAF'
+                }) }}
                 {{ form_row(compagny.SIRET) }}
                     <button type="submit" class="btn">Ajouter une entreprise</button>
                     {{ form_end(compagny) }}
