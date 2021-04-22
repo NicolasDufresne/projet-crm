@@ -32,8 +32,10 @@ class AddAppointmentController extends AbstractController
             $entityManager->flush();
 
             $dateString = $appointment->getDateTime()->format('Y-m-d H:i:s');
-            $userEmail = $this->getUser()->getUsername();
+            $user = $this->getUser();
+            $userEmail = $user->getUsername();
 
+            //mail for the user
             $email = (new Email())
                 ->from('projet.crm.nfactory.NDBBLF@gmail.com')
                 ->to($userEmail)
@@ -42,19 +44,40 @@ class AddAppointmentController extends AbstractController
                 ->html('<h1>Réunion définie le : ' . $dateString . '</h1>
                     
                     <p>
-                        Cette réunion aura pour sujet : ' . $appointment->getObject() . '
+                        Cette réunion aura pour sujet :<br/> ' . $appointment->getObject() . '
                     </p>
                     <p>
-                        Le client concerné est : ' . $appointment->getClientId()->getName() . ' ' . $appointment->getClientId()->getFirstName() . '
+                        Le client concerné est :<br/> ' . $appointment->getClientId()->getName() . ' ' . $appointment->getClientId()->getFirstName() . '
                     </p>
                     <p>
-                        Il est contactable via : ' . $appointment->getClientId()->getEmail() . ' / ' . $appointment->getClientId()->getPhonenumber() . '
+                        Il est contactable via :<br/> ' . $appointment->getClientId()->getEmail() . ' / ' . $appointment->getClientId()->getPhonenumber() . '
                     </p>
                     <p>
-                        Son adresse complète est : ' . $appointment->getClientId()->getAdress() . ' ' . $appointment->getClientId()->getCP() . ' ' . $appointment->getClientId()->getCity() . '
+                        Son adresse complète est :<br/> ' . $appointment->getClientId()->getAdress() . ' ' . $appointment->getClientId()->getCP() . ' ' . $appointment->getClientId()->getCity() . '
                     </p>
                     <p>
-                       Ce client est indiqué comme : ' . $appointment->getClientId()->getCommitment() . '
+                       Ce client est indiqué comme :<br/> ' . $appointment->getClientId()->getCommitment() . '
+                    </p>
+                    ');
+
+            $mailer->send($email);
+
+            //mail for the client
+            $email = (new Email())
+                ->from('projet.crm.nfactory.NDBBLF@gmail.com')
+                ->to($appointment->getClientId()->getEmail())
+                ->subject('Une nouvelle réunion dont vous êtes membre à été définie')
+                ->text($appointment->getObject() . ' ' . $dateString)
+                ->html('<h1>Réunion définie le : ' . $dateString . '</h1>
+                    
+                    <p>
+                        Cette réunion aura pour sujet :<br/>' . $appointment->getObject() . '
+                    </p>
+                    <p>
+                        Votre conseiller est :<br/>' . $user->getName() . ' ' . $user->getFirstName() . '
+                    </p>
+                    <p>
+                        Il est contactable via :<br/>' . $user->getUsername() . ' / ' . $user->getPhoneNumber() . '
                     </p>
                     ');
 
