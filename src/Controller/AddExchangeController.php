@@ -54,8 +54,20 @@ class AddExchangeController extends AbstractController
      * @Route("/exchange", name="exchangeAll")
      */
     public function ExchangeAll(ExchangeRepository $exchangeRepository) : Response {
-        $exchange = $exchangeRepository
-            ->findAll();
+
+        $user = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
+        $role = $user->getRoles();
+
+        if ($role[0] === "ROLE_ADMIN") {
+            $exchange = $exchangeRepository
+                ->findAll();
+        } else if ($role[0] === "ROLE_USER") {
+            $exchange = $exchangeRepository
+                ->findBy(['user' => $user]);
+        }
 
         return  $this->render('add_exchange/exchangeAll.html.twig',  [
             'exchange' => $exchange

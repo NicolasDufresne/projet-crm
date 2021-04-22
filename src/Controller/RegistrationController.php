@@ -19,29 +19,36 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, MailerInterface $mailer): Response
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        $actualUser = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
+        $role = $actualUser->getRoles();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+        if ($role[0] === "ROLE_ADMIN") {
+            $user = new User();
+            $form = $this->createForm(RegistrationFormType::class, $user);
+            $form->handleRequest($request);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
+                // encode the plain password
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
 
-            $email = (new Email())
-                ->from('projet.crm.nfactory.NDBBLF@gmail.com')
-                ->to($user->getEmail())
-                ->subject('Hello World !')
-                ->text('Le texte va ici apparement')
-                ->html('<h1>Bienvenue ' . $user->getFirstName() . ' ' . $user->getName() . ' !</h1>
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                $email = (new Email())
+                    ->from('projet.crm.nfactory.NDBBLF@gmail.com')
+                    ->to($user->getEmail())
+                    ->subject('Hello World !')
+                    ->text('Le texte va ici apparement')
+                    ->html('<h1>Bienvenue ' . $user->getFirstName() . ' ' . $user->getName() . ' !</h1>
                     
                     <p>
                         Un compte vous à été crée avec votre adresse email sur notre plateforme
@@ -52,15 +59,16 @@ class RegistrationController extends AbstractController
                     </p>
                     ');
 
-            $mailer->send($email);
+                $mailer->send($email);
 
+                return $this->redirectToRoute('home');
+            }
+
+            return $this->render('registration/register.html.twig', [
+                'registrationForm' => $form->createView(),
+            ]);
+        } else {
             return $this->redirectToRoute('home');
         }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
     }
-
-
 }
