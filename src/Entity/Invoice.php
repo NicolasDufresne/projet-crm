@@ -56,11 +56,6 @@ class Invoice
      */
     private $client_id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Compagny::class, inversedBy="invoice_id")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $compagny_id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="invoice_id")
@@ -154,18 +149,6 @@ class Invoice
     public function setClientId(?client $client_id): self
     {
         $this->client_id = $client_id;
-
-        return $this;
-    }
-
-    public function getCompagnyId(): ?compagny
-    {
-        return $this->compagny_id;
-    }
-
-    public function setCompagnyId(?compagny $compagny_id): self
-    {
-        $this->compagny_id = $compagny_id;
 
         return $this;
     }
