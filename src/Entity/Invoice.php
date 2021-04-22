@@ -4,12 +4,15 @@ namespace App\Entity;
 
 use App\Repository\InvoiceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=InvoiceRepository::class)
  */
 class Invoice
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -64,6 +67,7 @@ class Invoice
      * @ORM\JoinColumn(nullable=false)
      */
     private $user_id;
+
 
     public function getId(): ?int
     {
@@ -177,4 +181,5 @@ class Invoice
 
         return $this;
     }
+
 }

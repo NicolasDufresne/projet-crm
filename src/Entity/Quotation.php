@@ -6,12 +6,15 @@ use App\Repository\QuotationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=QuotationRepository::class)
  */
 class Quotation
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -63,6 +66,7 @@ class Quotation
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="quotation_id")
      */
     private $user_id;
+
 
     public function __construct()
     {
@@ -206,4 +210,5 @@ class Quotation
 
         return $this;
     }
+
 }

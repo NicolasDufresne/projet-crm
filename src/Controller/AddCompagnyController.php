@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
 
 class AddCompagnyController extends AbstractController
 {
@@ -23,6 +24,8 @@ class AddCompagnyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $date = new \DateTime('NOW');
+            $compagny->setCreatedAt($date);
             $entityManager->persist($compagny);
             $entityManager->flush();
 

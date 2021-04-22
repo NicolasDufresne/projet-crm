@@ -23,7 +23,6 @@ class AddExchangeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $userid = $this->getUser();
-            var_dump($userid);
             $exchange ->setUser($userid);
             $entityManager->persist($exchange);
             $entityManager->flush();

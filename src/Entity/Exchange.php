@@ -6,12 +6,15 @@ use App\Repository\ExchangeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ExchangeRepository::class)
  */
 class Exchange
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -52,6 +55,7 @@ class Exchange
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
 
     public function __construct()
     {
@@ -171,5 +175,6 @@ class Exchange
 
         return $this;
     }
+
 
 }

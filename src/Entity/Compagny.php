@@ -6,12 +6,15 @@ use App\Repository\CompagnyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=CompagnyRepository::class)
  */
 class Compagny
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -68,6 +71,7 @@ class Compagny
      * @ORM\OneToMany(targetEntity=Quotation::class, mappedBy="compagny_id")
      */
     private $quotation_id;
+
 
     public function __construct()
     {
@@ -279,4 +283,5 @@ class Compagny
     {
         return $this->name;
     }
+
 }

@@ -6,12 +6,15 @@ use App\Repository\TicketRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=TicketRepository::class)
  */
 class Ticket
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -76,6 +79,7 @@ class Ticket
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
 
     public function __construct()
     {
@@ -287,4 +291,5 @@ class Ticket
 
         return $this;
     }
+
 }

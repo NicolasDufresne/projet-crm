@@ -4,12 +4,15 @@ namespace App\Entity;
 
 use App\Repository\AppointmentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass=AppointmentRepository::class)
  */
 class Appointment
 {
+
+    use TimestampableEntity;
 
     /**
      * @ORM\Id
@@ -47,6 +50,7 @@ class Appointment
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="appointment_id")
      */
     private $user_id;
+
 
     public function getId(): ?int
     {
@@ -129,5 +133,6 @@ class Appointment
     {
         return $this->user_id;
     }
+
 
 }
