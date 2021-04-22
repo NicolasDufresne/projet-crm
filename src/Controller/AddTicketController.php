@@ -58,8 +58,20 @@ class AddTicketController extends AbstractController
      * @Route("/ticket", name="ticketAll")
      */
     public function TicketAll(TicketRepository $ticketRepository) : Response {
-        $ticket = $ticketRepository
-            ->findAll();
+
+        $user = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
+        $role = $user->getRoles();
+
+        if ($role[0] === "ROLE_ADMIN") {
+            $ticket = $ticketRepository
+                ->findAll();
+        } else if ($role[0] === "ROLE_USER") {
+            $ticket = $ticketRepository
+                ->findBy(['user' => $user]);
+        }
 
         return  $this->render('add_ticket/ticketAll.html.twig',  [
             'ticket' => $ticket

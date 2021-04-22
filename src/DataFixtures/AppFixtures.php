@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
             $manager->persist($category);
         }
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             //user
             $user = new User();
@@ -132,7 +132,7 @@ class AppFixtures extends Fixture
         $user->setName($faker->lastName);
         $user->setPassword('$2y$10$ywTv5juss2WV1RiacJ15U.g3KEB7n2BaUyj7lz/APESkPFkpwfJ2i');
         $user->setPhonenumber($faker->phoneNumber);
-        $user->setRoles((array)'ROLE_ADMIN');
+        $user->setRoles((array)'ROLE_USER');
         $manager->persist($user);
 
         //create one "admin" user with fixed login credentials

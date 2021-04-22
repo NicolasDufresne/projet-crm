@@ -55,8 +55,20 @@ class AddAppointmentController extends AbstractController
      * @Route("/appointment", name="appointmentAll")
      */
     public function AppointmentAll(AppointmentRepository $appointmentRepository) : Response {
-        $appointment = $appointmentRepository
-            ->findAll();
+
+        $user = $this->getUser();
+        if (empty($user)) {
+            return $this->redirectToRoute('home');
+        }
+        $role = $user->getRoles();
+
+        if ($role[0] === "ROLE_ADMIN") {
+            $appointment = $appointmentRepository
+                ->findAll();
+        } else if ($role[0] === "ROLE_USER") {
+            $appointment = $appointmentRepository
+                ->findBy(['user_id' => $user]);
+        }
 
         return  $this->render('add_appointment/appointmentAll.html.twig',  [
             'appointment' => $appointment
