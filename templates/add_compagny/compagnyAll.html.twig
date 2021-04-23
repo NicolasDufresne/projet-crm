@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compagny{% endblock %}
+
+{% block body %}
+
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Entreprises</caption>
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Adresse d'envoi</th>
+                <th scope="col">TVA</th>
+                <th scope="col">NAF</th>
+                <th scope="col">Siret</th>
+                <th scope="col">Détails</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for i in compagny %}
+                <tr>
+                    <td data-label="Nom">{{ i.name }}</td>
+                    <td data-label="Adresse">{{ i.adress }}</td>
+                    <td data-label="Adresse d'envoi">{{ i.sendAdress }}</td>
+                    <td data-label="TVA">{{ i.tva }}</td>
+                    <td data-label="NAF">{{ i.naf }}</td>
+                    <td data-label="Siret">{{ i.siret }}</td>
+                    <td data-label="Detail"><a href="/compagny/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br/>
+
+        <div class="btn-add"><a href="/add/compagny" class="login">Ajouter une entreprise</a></div>
+
+
+    </div>
+    <div class="clear"></div>
+
+
+
+{% endblock %}

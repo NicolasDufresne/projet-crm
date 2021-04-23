@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="dashboard-homepage">
+        <div class="dashboard-homepage-details">
+            <h1>Détails du client {{ client.name }} {{ client.firstname }}</h1>
+
+            <div class="card"><h2>Email : </h2>{{client.email}}</div>
+            <div class="card"><h2>Nom : </h2>{{ client.name }}</div>
+            <div class="card"><h2>Prénom : </h2>{{ client.firstname }}</div>
+            <div class="card"><h2>Téléphone : </h2>{{ client.phonenumber }}</div>
+            <div class="card"><h2>Adresse : </h2>{{ client.adress }}</div>
+            <div class="card"><h2>Cp : </h2>{{ client.cp }}</div>
+            <div class="card"><h2>City : </h2>{{ client.city }}</div>
+            <div class="card"><h2>Compagny : </h2>{{ client.compagny }}</div>
+        </div>
+    </div>
+
+{% endblock %}

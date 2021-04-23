@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quotation{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+
+        <div class="form">
+
+            <div class="form-txt">
+                <h1 class="h1-form-dashboard">Détails du devis</h1>
+
+                <div class="card"><h2>Référence : </h2>{{quotation.ref}}</div>
+                <div class="card"><h2>Statut : </h2>{{ quotation.status }}</div>
+                <div class="card"><h2>TVA : </h2>{{ quotation.tva }}</div>
+                <div class="card"><h2>TTC : </h2>{{ quotation.ttc }}</div>
+                <div class="card"><h2>HT : </h2>{{ quotation.ht }}</div>
+                <div class="card"><h2>Client : </h2>{{ quotation.clientId.name }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

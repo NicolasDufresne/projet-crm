@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tickets{% endblock %}
+
+{% block body %}
+
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Tickets</caption>
+            <thead>
+            <tr>
+                <th scope="col">Objet</th>
+                <th scope="col">Informations</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Client</th>
+                <th scope="col">Créateur</th>
+                <th scope="col">Détails</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for i in ticket %}
+                <tr>
+                    <td data-label="Object">{{ i.object }}</td>
+                    <td data-label="Details">{{ i.details }}</td>
+                    <td data-label="Status">{{ i.status }}</td>
+                    <td data-label="Client">{{ i.client.name }}</td>
+                    <td data-label="User">{{ i.user.name }}</td>
+                    <td data-label="Detail"><a href="/ticket/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br/>
+
+        <div class="btn-add"><a href="/add/ticket" class="login">Ajouter un ticket</a></div>
+
+
+    </div>
+    <div class="clear"></div>
+
+
+{% endblock %}

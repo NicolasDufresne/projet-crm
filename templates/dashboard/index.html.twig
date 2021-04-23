@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+        <div class="dashboard-homepage-illustration">
+
+            <img src="{{ asset('images/dashboard-illustration.svg') }}" alt="HomePage">
+
+            <h1>Bienvenue sur notre dashboard du CRM le plus performant du paf !</h1>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Ticket{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+
+        <div class="form">
+
+            <div class="form-txt">
+                <h1 class="h1-form-dashboard">Ajouter une ticket</h1>
+
+                {{ form_start(ticket) }}
+                {{ form_row(ticket.object, {
+                    label: 'Objet'
+                }) }}
+                {{ form_row(ticket.details, {
+                    label: 'Détails'
+                }) }}
+                {{ form_row(ticket.client) }}
+                 <button type="submit" class="btn">Ajouter un ticket</button>
+                    {{ form_end(ticket) }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

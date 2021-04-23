@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appointment{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="dashboard-homepage">
+
+        <table>
+            <caption>Échanges</caption>
+            <thead>
+            <tr>
+                <th scope="col">Client</th>
+                <th scope="col">Nom du commercial</th>
+                <th scope="col">Type</th>
+                <th scope="col">Détails</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for i in exchange %}
+                <tr>
+                    <td data-label="Client">{{ i.clientId.name }}</td>
+                    <td data-label="Nom du commercial">{{ i.user.name }}</td>
+                    <td data-label="Type">{{ i.type }}</td>
+                    <td data-label="Detail"><a href="/exchange/{{ i.id }}">ici</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br/>
+
+        <div class="btn-add"><a href="/add/exchange" class="login">Ajouter un échange</a></div>
+
+
+    </div>
+    <div class="clear"></div>
+
+
+{% endblock %}

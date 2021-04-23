@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoice{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+
+    <div class="dashboard-homepage">
+        <div class="dashboard-homepage-details">
+            <h1 class="h1-form-dashboard">Détails de la facture</h1>
+
+            <div class="card"><h2>Référence : </h2>{{ invoice.ref }}</div>
+            <div class="card"><h2>Statut : </h2>{{ invoice.status }}</div>
+            <div class="card"><h2>TVA : </h2>{{ invoice.tva }}</div>
+            <div class="card"><h2>TTC : </h2>{{ invoice.ttc }}</div>
+            <div class="card"><h2>HT : </h2>{{ invoice.ht }}</div>
+            <div class="card"><h2>Client : </h2>{{ invoice.clientId.name }}</div>
+            <div class="card"><h2>Nom du commercial : </h2>{{ invoice.userId.name }}</div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,654 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*, *:after, *:before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.clear:before, .clear:after {
+    content: '';
+    display: table;
+}
+
+.clear:after {
+    clear: both
+}
+
+.clear {
+    *zoom: 1;
+}
+
+
+:root {
+    --primary-color: #f3f8ff;
+    --secondary-color: #deecff;
+    --tertiary-color: #c6cfff;
+    --button-color: #ff6584;
+    --button-color-hover: #FFB3C2;
+    --simple-white: #ffffff;
+    --simple-black: #000000;
+    --light-black: #33475C;
+    --copyright: #2d3e50;
+    --animation: all 0.4s ease;
+}
+
+body {
+    font-family: "Montserrat", serif;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    scroll-behavior: smooth !important;
+    position: relative;
+}
+
+.dashboard-nav {
+    display: none;
+}
+
+#mainnav {
+    background-color: white;
+    background: var(--simple-white);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 101;
+    box-shadow: 0 2px 4px rgba(45, 62, 80, 0.12);
+}
+
+#mainnav #menu {
+    display: none;
+    padding: .5em .5em;
+    cursor: pointer;
+}
+
+#mainnav .logo {
+    width: 5%;
+    float: left;
+    padding-left: 20px;
+}
+
+#mainnav .logo img {
+    width: 100%;
+    min-width: 54px;
+    padding: 5px 0 0 0;
+}
+
+
+#mainnav ul {
+    display: block;
+    margin: 0;
+    text-align: right;
+    width: 95%;
+    float: left;
+}
+
+#mainnav ul li {
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    padding: 5px
+}
+
+a {
+    padding: 25px 20px;
+    text-decoration: none;
+    background: none;
+    color: var(--simple-black);
+    min-width: 100px;
+    display: inline-block;
+    line-height: 3rem;
+}
+
+
+.login {
+    text-decoration: none;
+    background-color: var(--button-color);
+    color: var(--simple-white);
+    border-radius: 5px;
+    padding: 10px 20px 15px 20px;
+    -webkit-transition: var(--animation);
+    transition: var(--animation);
+}
+
+.login:hover {
+    background-color: var(--button-color-hover);
+    color: var(--simple-white);
+}
+
+a:after {
+    display: block;
+    content: '';
+    border-bottom: solid 2px var(--button-color);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    width: 40px;
+    margin: 0 auto;
+    margin-top: -10px;
+}
+
+a:hover {
+    color: var(--button-color);
+    -webkit-transition: var(--animation);
+    transition: var(--animation);
+}
+
+.unshow {
+    display: none !important;
+}
+
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 4rem;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+p {
+    padding: 20px 0;
+    font-weight: lighter;
+}
+
+.homepage .homepage-txt a {
+    padding: 10px 15px;
+    text-decoration: none;
+    background-color: var(--button-color);
+    color: var(--simple-white);
+    border-radius: 5px;
+    -webkit-transition: var(--animation);
+    transition: var(--animation);
+}
+
+.homepage .homepage-txt a:hover {
+    background-color: var(--button-color-hover);
+    color: var(--simple-white);
+    -webkit-transition: var(--animation);
+    transition: var(--animation);
+}
+
+.wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: content-box;
+}
+
+.homepage {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    position: relative;
+}
+
+.homepage-txt {
+    max-width: 480px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 33%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.homepage-illustration {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.description,
+.first-step {
+    padding: 100px 0;
+}
+
+.description .description-txt {
+    max-width: 802px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.first-step {
+    background-color: var(--secondary-color);
+}
+
+.first-step .first-step-txt {
+    text-align: center;
+}
+
+.first-step .first-step-txt h1 {
+    padding: 50px 0 0 0;
+}
+
+.first-step .first-step-txt .advantages-33 {
+    display: inline-block;
+    min-width: 350px;
+}
+
+.first-step .first-step-txt .advantages-33 img {
+    height: 250px;
+    width: 100%;
+    padding: 50px;
+}
+
+@media screen and (max-width: 916px) {
+    body {
+        font-size: 1rem;
+    }
+
+    .homepage-illustration img {
+        width: 100%;
+    }
+}
+
+
+.footer {
+    background-color: var(--light-black);
+    color: var(--simple-white);
+}
+
+.footer .block33 {
+    width: 33.33333333333333333333333333333333333333333%;
+    float: left;
+    padding: 50px 0;
+    font-weight: lighter;
+}
+
+.footer .block33:nth-child(3) {
+    text-align: center;
+}
+
+.footer .block33 a {
+    padding: 0 0 0 50px;
+    background-color: transparent;
+    text-align: center;
+    color: var(--simple-white);
+}
+
+.footer .block33 a:hover {
+    color: var(--button-color);
+}
+
+.footer .copyright {
+    background-color: var(--copyright);
+    text-align: center;
+}
+
+.footer .copyright p {
+    padding: 10px 0 !important;
+}
+
+@media screen and  (max-width: 600px) {
+    .homepage-txt {
+        width: 100%;
+        top: 15%;
+        left: 0;
+        transform: none;
+        text-align: center;
+    }
+
+    .footer .block33 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer .block33 a {
+        padding: 0 !important;
+    }
+}
+
+.dashboard {
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    box-shadow: 0 2px 4px rgba(45, 62, 80, 0.12);
+    background-color: var(--simple-white);
+    width: 12%;
+    z-index: 99999;
+    overflow: auto;
+}
+
+.logo-dashboard {
+    width: 50px;
+}
+
+.logo-dashboard img {
+    width: 100%;
+    margin-left: 50px;
+}
+
+.block-dashboard {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+form, h1 {
+    font-family: "Montserrat", serif;
+    padding: 0 10px;
+}
+
+.h1-form-dashboard {
+    margin-left: 20%;
+}
+
+.dashboard-homepage {
+    float: right;
+    width: 88%;
+}
+
+.dashboard-homepage-details {
+    padding: 20px;
+}
+
+.dashboard-homepage-illustration {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.card {
+    background-color: var(--simple-white);
+    box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.form {
+    border: solid 1px whitesmoke;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+.form .form-txt {
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    width: 100%;
+    height: 100%;
+}
+
+label:first-child {
+    display: inline-block;
+    width: 20%;
+}
+
+input,
+button,
+select {
+    width: 75%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    font-family: "Montserrat", serif;
+    font-size: 1rem;
+    text-decoration: none;
+    background-color: #ff6584;
+    color: #FFFFFF;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    border: none;
+    width: 75%;
+    margin-left: 20%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #FFB3C2;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+@media screen and  (max-width: 700px) {
+    .form {
+        width: 80%;
+    }
+
+    .form .form-illustration {
+        display: none;
+    }
+
+    .form .form-txt {
+        width: 100%;
+        clip-path: none;
+        border-radius: 10px;
+    }
+
+    .h1-form-dashboard {
+        margin: 0;
+    }
+}
+
+/*************************Table******************************/
+
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    width: 97%;
+    table-layout: fixed;
+}
+
+table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+}
+
+table tr {
+    background-color: var(--simple-white);
+    border: 1px solid #ddd;
+    padding: .35em;
+    font-size: 1rem;
+}
+
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
+}
+
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+
+    table caption {
+        font-size: 1.3em;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    table td::before {
+        /*
+        * aria-label has no advantage, it won't be read inside a table
+        content: attr(aria-label);
+        */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+.btn-add {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0;
+}
+
+@media all and (max-width: 1108px) {
+    #logo {
+        width: 100%;
+    }
+
+    #menu {
+        float: right;
+        top: 0;
+    }
+
+    .dashboard-nav {
+        display: block;
+    }
+
+    #mainnav {
+        width: 100%;
+    }
+
+    #mainnav #menu {
+        display: block;
+        font-size: 4em;
+    }
+
+    #mainnav ul {
+        display: none;
+        background-color: white;
+        padding: 1em;
+        text-align: left;
+        width: 100%;
+    }
+
+    #mainnav ul li {
+        display: block;
+    }
+
+    #mainnav ul li a {
+        display: block;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    .dashboard {
+        display: none;
+    }
+
+    .unshow {
+        display: block !important;
+    }
+
+    .dashboard-homepage {
+        width: 100%;
+        margin-top: 130px;
+    }
+}
+
+#appointment_form_dateTime_date_month,
+#appointment_form_dateTime_date_day,
+#appointment_form_dateTime_date_year,
+#appointment_form_dateTime_time_hour,
+#appointment_form_dateTime_time_minute {
+    width: 15%;
+    margin: 10px;
+}
+
+#appointment_form_dateTime {
+    display: inline-block;
+    width: 75%;
+}
+
+.dashboard a {
+    line-height: 2.5rem;
+}
+
+nav ul li a {
+    line-height: 2rem;
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Quotation{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: var(--primary-color);
+        }
+    </style>
+
+    <div class="fix-block-dashboard"></div>
+
+    <div class="block-dashboard">
+
+        <div class="form">
+
+            <div class="form-txt">
+                <h1 class="h1-form-dashboard">Ajouter un devis</h1>
+
+                {{ form_start(quotation) }}
+                {{ form_row(quotation.ref, {
+                    label: 'Référence'
+                }) }}
+                {{ form_row(quotation.status, {
+                    label: 'Statut'
+                }) }}
+                {{ form_row(quotation.TVA, {
+                    label: 'TVA'
+                }) }}
+                {{ form_row(quotation.TTC, {
+                    label: 'TTC'
+                }) }}
+                {{ form_row(quotation.HT, {
+                    label: 'HT'
+                }) }}
+                 <button type="submit" class="btn">Ajouter un devis</button>
+                    {{ form_end(quotation) }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}
